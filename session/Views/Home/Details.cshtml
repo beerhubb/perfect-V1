@@ -1,0 +1,85 @@
+﻿@model session.Models.Jregister
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Jregister</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model._id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jpictrue1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jpictrue1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jpictrue2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jpictrue2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jpictrue3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jpictrue3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jdatail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jdatail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jaddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jaddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jprice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jprice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jline)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jline)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jphone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jphone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.jid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jid)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="profile">Back to List</a>
+</div>

@@ -1,0 +1,76 @@
+﻿@model session.Models.Register
+
+@{
+    ViewData["Title"] = "register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>register</h2>
+
+<h4>Register</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="username" class="control-label"></label>
+                <input asp-for="username" class="form-control" />
+                <span asp-validation-for="username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="age" class="control-label"></label>
+                <input asp-for="age" class="form-control" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <a href="https://uppic.cc/?fbclid=IwAR0aPysKDeUBRNr8WJU11KKoGHvYNjWH7N_zG9DYtwWXSXPpnjO6HHHt2Bk" target="_blank" class="btn btn-info" role="button">ฝากรูป!!</a>
+            <div class="form-group">
+                <label asp-for="pictrue" class="control-label"></label>
+                <input asp-for="pictrue" class="form-control" />
+                <span asp-validation-for="pictrue" class="text-danger"></span>
+            </div>
+            <a href="https://uppic.cc/?fbclid=IwAR0aPysKDeUBRNr8WJU11KKoGHvYNjWH7N_zG9DYtwWXSXPpnjO6HHHt2Bk" target="_blank" class="btn btn-info" role="button">ฝากรูป!!</a>
+            <div class="form-group">
+                <label asp-for="pictrueP" class="control-label"></label>
+                <input asp-for="pictrueP" class="form-control" />
+                <span asp-validation-for="pictrueP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label" for="radio1">
+                    <input type="radio" asp-for="status" id="radio1" value="1" checked>จ้างงาน
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label" for="radio2">
+                    <input type="radio" asp-for="status" id="radio2" value="2">หางาน
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

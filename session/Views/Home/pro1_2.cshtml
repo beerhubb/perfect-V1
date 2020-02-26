@@ -1,0 +1,81 @@
+﻿@model IEnumerable<session.Models.HIRE>
+
+@{
+    ViewData["Title"] = "pro1_2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>งานที่ถูกว่าจ้าง</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.jname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jpictrue1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jpictrue2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jpictrue3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jdatail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jaddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jphone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.jname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jpictrue1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jpictrue2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jpictrue3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jdatail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jaddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jphone)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

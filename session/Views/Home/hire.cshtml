@@ -1,0 +1,74 @@
+﻿@model session.Models.HIRE
+
+@{
+    ViewData["Title"] = "hire";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>hire</h2>
+
+<h4>HIRE</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="hire">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="jname" class="control-label"></label>
+                <input asp-for="jname" class="form-control" />
+                <span asp-validation-for="jname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="jpictrue1" class="control-label"></label>
+                <input asp-for="jpictrue1" class="form-control" />
+                <span asp-validation-for="jpictrue1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="jpictrue2" class="control-label"></label>
+                <input asp-for="jpictrue2" class="form-control" />
+                <span asp-validation-for="jpictrue2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="jpictrue3" class="control-label"></label>
+                <input asp-for="jpictrue3" class="form-control" />
+                <span asp-validation-for="jpictrue3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="jdatail" class="control-label"></label>
+                <input asp-for="jdatail" class="form-control" />
+                <span asp-validation-for="jdatail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="jaddress" class="control-label"></label>
+                <input asp-for="jaddress" class="form-control" />
+                <span asp-validation-for="jaddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="jprice" class="control-label"></label>
+                <input asp-for="jprice" class="form-control" />
+                <span asp-validation-for="jprice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="jline" class="control-label"></label>
+                <input asp-for="jline" class="form-control" />
+                <span asp-validation-for="jline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="jphone" class="control-label"></label>
+                <input asp-for="jphone" class="form-control" />
+                <span asp-validation-for="jphone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="จ้าง" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

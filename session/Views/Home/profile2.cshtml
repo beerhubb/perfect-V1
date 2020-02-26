@@ -1,0 +1,80 @@
+﻿@model IEnumerable<session.Models.Jregister>
+
+@{
+    ViewData["Title"] = "profile2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-3">
+    <h2><b>โปรไฟล์ของฉัน</b></h2>
+    <div class="media border p-3">
+        <img src="@ViewBag.pictrue" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+        <div class="media-body">
+            <h4>@ViewBag.name<small><i>  อายุ @ViewBag.age ปี</i></small></h4>
+            <p>ที่อยู่ : @ViewBag.add</p>
+        </div>
+    </div>
+    <hr />
+    <h2><b>งานของฉัน</b></h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.jname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jdatail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jaddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jprice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jphone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jid)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jdatail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jaddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jprice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jphone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jid)
+                    </td>
+                    <td>
+                        @Html.ActionLink("คนที่รับงานนี้", "conf", new { id=item._id }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

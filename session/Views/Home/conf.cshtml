@@ -1,0 +1,38 @@
+﻿@model IEnumerable<session.Models.Confirmed>
+
+@{
+    ViewData["Title"] = "conf";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>คนที่รับงานนี้</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ชื่องาน
+            </th>
+            <th>
+                คนรับงาน
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NJ)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NM)
+                </td>
+                <td>
+                    @Html.ActionLink("เอาคนนี้", "get", new { id = item._id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<session.Models.Register>
+
+@{
+    ViewData["Title"] = "maid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>แม่บ้านของเรา</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <h2>Card Image</h2>
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="@Html.DisplayFor(model => item.pictrueP)" alt="Card image" style="width:70%">
+                <div class="card-body">
+                    <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                    <p class="card-text">
+                        อายุ :@Html.DisplayFor(model => item.age) ปี  ที่อยู่ :@Html.DisplayFor(model => item.address)   @if (item.status == "1")
+                        {<h5>แม่บ้าน</h5>}
+                    </p>
+                    @if (ViewBag.use != null && ViewBag.status == "2")
+                    {
+                        @Html.ActionLink("จ้างคนนี้", "hire", new { id = item._id })
+                    }
+                    else
+                    {
+                        <a asp-area="" asp-controller="Home" asp-action="Login">เข้าสู่ระบบเพื่อจ้างงาน</a>
+                    }
+
+                </div>
+            </div>
+            <hr />
+            @*
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+        }
+    </div>
+</div>

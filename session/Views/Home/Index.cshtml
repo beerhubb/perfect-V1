@@ -1,0 +1,40 @@
+﻿@model IEnumerable<session.Models.Jregister>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>เลือกงาน</h2>
+<hr />
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mx-auto mt-5">
+                <div class="card-deck">
+                    <div class="card">
+                        <img src="@Html.DisplayFor(model => item.jpictrue1)" class="figure-img img-fluid rounded" alt="Card image cap" style="width:60%">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(model => item.jname)</h5>
+                            <p class="card-text">รายระเอียด : @Html.DisplayFor(model => item.jdatail)  </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">ราคางาน : @Html.DisplayFor(model => item.jprice)</small>
+                        </div>
+                        @if (@ViewBag.use != null && ViewBag.status == "1")
+                        {
+                            @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id })
+                        }
+                        else
+                        {
+                            <a asp-area="" asp-controller="Home" asp-action="Login">เข้าสู่ระบบเพื่อรับงาน</a>
+                        }
+                    </div>
+                </div>
+            </div>
+            
+        }
+        <hr />
+    </div>
+</div>

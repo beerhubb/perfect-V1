@@ -1,0 +1,52 @@
+﻿@model IEnumerable<session.Models.Confirmed>
+
+@{
+    ViewData["Title"] = "pro1_1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>สถานะงานของฉัน</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NJ)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NM)
+                </td>
+                <td>
+                    @if (item.status != "0")
+                    {
+                        @if (item.status == "1")
+                        {@Html.ActionLink("Details", "Details", new { id = item.Jid })}
+                    }
+                    else
+                    {
+                        <h5>รอการอณุมัติ</h5>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
