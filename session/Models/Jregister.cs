@@ -13,6 +13,9 @@ namespace session.Models
         public string _id { get; set; }
 
         [Required]
+        public string Sesid { get; set; }
+
+        [Required]
         [Display(Name = "ชื่องาน")]
         public string jname { get; set; }
 
@@ -48,7 +51,8 @@ namespace session.Models
         [Display(Name = "เบอร์โทรศัพท์")]
         public string jphone { get; set; }
 
-        public string jid { get; set; }
-
+        [Required]
+        [Display(Name = "สถานะ")]
+        public string jstatus { get; set; }
     }
 }

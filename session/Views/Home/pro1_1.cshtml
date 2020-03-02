@@ -11,13 +11,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NJ)
+                @Html.DisplayNameFor(model => model.jname)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NM)
+                @Html.DisplayNameFor(model => model.jdatail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.status)
+                @Html.DisplayNameFor(model => model.jaddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jstatus)
             </th>
             <th></th>
         </tr>
@@ -27,24 +30,23 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NJ)
+                    @Html.DisplayFor(modelItem => item.jname)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NM)
+                    @Html.DisplayFor(modelItem => item.jdatail)
                 </td>
                 <td>
-                    @if (item.status != "0")
-                    {
-                        @if (item.status == "1")
-                        {@Html.ActionLink("Details", "Details", new { id = item.Jid })}
-                    }
-                    else
-                    {
-                        <h5>รอการอณุมัติ</h5>
-                    }
+                    @Html.DisplayFor(modelItem => item.jaddress)
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @if (item.jstatus == "1")
+                    {<div>รอการยืนยัน</div>}
+                    else if (item.jstatus == "2")
+                    {<div>อนุมัติแล้ว</div>}
+                </td>
+                <td>
+                    @if (item.jstatus == "2")
+                    {@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })}
                 </td>
             </tr>
         }

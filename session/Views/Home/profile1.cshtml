@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="container mt-3">
+<div class="container p-3 my-3 border">
+    <div class="jumbotron">
         <h2><b>โปรไฟล์ของฉัน</b></h2>
         <div class="media border p-3">
             <img src="@ViewBag.pictrue" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
@@ -14,5 +15,7 @@
             </div>
         </div>
         <hr />
-        @Html.ActionLink("งานที่ต้องทำ", "pro1_1")  |  @Html.ActionLink("งานที่ถูกว่าจ้าง", "pro1_2")
+        <a href="pro1_1" class="btn btn-info" role="button">งานของฉัน</a>
+        <a href="pro1_2" class="btn btn-info" role="button">งานที่ถูกว่าจ้าง</a>
     </div>
+</div>
