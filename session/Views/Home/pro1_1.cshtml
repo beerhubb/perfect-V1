@@ -43,10 +43,12 @@
                     {<div>รอการยืนยัน</div>}
                     else if (item.jstatus == "2")
                     {<div>อนุมัติแล้ว</div>}
+                    else if (item.jstatus == "3")
+                    {<div>ทำเสร็จแล้ว</div>}
                 </td>
                 <td>
                     @if (item.jstatus == "2")
-                    {@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })}
+                    {@Html.ActionLink("Details", "Details", new { id = item._id })}
                 </td>
             </tr>
         }

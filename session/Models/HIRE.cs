@@ -12,9 +12,13 @@ namespace session.Models
         [BsonId]
         public string _id { get; set; }
 
-        public string Mid { get; set; }
+        public string Ses1id { get; set; }
 
-        public string sesid { get; set; }
+        public string Ses2id { get; set; }
+
+        public string Ses2Nameid { get; set; }
+
+        public string Ses2statusid { get; set; }
 
         [Required]
         [Display(Name = "ชื่องาน")]
@@ -52,6 +56,8 @@ namespace session.Models
         [Display(Name = "เบอร์โทรศัพท์")]
         public string jphone { get; set; }
 
-
+        [Required]
+        [Display(Name = "สถานะงาน")]
+        public string status { get; set; }
     }
 }

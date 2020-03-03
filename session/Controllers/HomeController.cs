@@ -45,7 +45,6 @@ namespace session.Controllers
         {
             ViewBag.use = HttpContext.Session.GetString("use");
             ViewBag.status = HttpContext.Session.GetString("status");
-
             var result = Collectionregis.Find(it => it.status == "1").ToList();
 
             return View(result);
@@ -68,8 +67,10 @@ namespace session.Controllers
             var item = new HIRE
             {
                 _id = Guid.NewGuid().ToString(),
-                Mid = dataregid._id,
-                sesid = ViewBag.id,
+                Ses1id = ViewBag.id,
+                Ses2id = dataregid._id,
+                Ses2Nameid = dataregid.name,
+                Ses2statusid = dataregid.status,
                 jname = data.jname,
                 jpictrue1 = data.jpictrue1,
                 jpictrue2 = data.jpictrue2,
@@ -78,7 +79,9 @@ namespace session.Controllers
                 jaddress = data.jaddress,
                 jprice = data.jprice,
                 jline = data.jline,
-                jphone = data.jphone
+                jphone = data.jphone,
+                status = null
+
             };
             Collationhire.InsertOne(item);
             return RedirectToAction("maid");
@@ -259,9 +262,25 @@ namespace session.Controllers
         {
             ViewBag.use = HttpContext.Session.GetString("use");
             ViewBag.id = HttpContext.Session.GetString("id");
-            var result = Collationhire.Find(it => it.Mid == HttpContext.Session.GetString("id")).ToList();
+            var result = Collationhire.Find(it => it.Ses2id == HttpContext.Session.GetString("id")).ToList();
 
             return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult select(string id)
+        {
+            var upstatus = Builders<HIRE>.Update.Set(it => it.status, "1");
+
+            Collationhire.UpdateOne(it => it._id == id, upstatus);
+            return RedirectToAction("pro1_2");
+        }
+
+        public IActionResult Detailsjob(string id) {
+            ViewBag.use = HttpContext.Session.GetString("use");
+            var select = Collationhire.Find(it => it._id == id).FirstOrDefault();
+
+            return View(select);
         }
 
         public IActionResult conf(string id)
@@ -273,20 +292,60 @@ namespace session.Controllers
         }
 
         [HttpGet]
-        public IActionResult get(string id) {
-            var item = Collationconf.Find(it => it._id == id).FirstOrDefault();
-            var def = Builders<Confirmed>.Update.Set(it => it.jstatus, "3");
+        public IActionResult get(string id)
+        {
+            var def = Builders<Confirmed>.Update.Set(it => it.jstatus, "2");
+            var upregis = Builders<Jregister>.Update.Set(it => it.jstatus, "1");
 
-            Collationconf.UpdateOne(it => it._id == id,def);
+            Collationconf.UpdateOne(it => it.Jid == id, def);
+            CollectionJregis.UpdateOne(it => it._id == id, upregis);
             return RedirectToAction("profile2");
         }
 
         public IActionResult Details(string id)
         {
             ViewBag.use = HttpContext.Session.GetString("use");
-            var result = CollectionJregis.Find(it => it._id == id).ToList().FirstOrDefault();
+            var result = Collationconf.Find(it => it._id == id).FirstOrDefault();
 
             return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult OK(string id)
+        {
+            var def = Builders<Confirmed>.Update.Set(it => it.jstatus, "3");
+
+            Collationconf.UpdateOne(it => it._id == id, def);
+
+            return RedirectToAction("profile1");
+        }
+
+        [HttpGet]
+        public IActionResult finish(string id)
+        {
+            var def = Builders<Confirmed>.Update.Set(it => it.jstatus, "4");
+            var upregis = Builders<Jregister>.Update.Set(it => it.jstatus, "2");
+
+            Collationconf.UpdateOne(it => it.Jid == id, def);
+            CollectionJregis.UpdateOne(it => it._id == id, upregis);
+            return RedirectToAction("profile2");
+        }
+
+        public IActionResult jobme()
+        {
+            ViewBag.use = HttpContext.Session.GetString("use");
+            ViewBag.id = HttpContext.Session.GetString("id");
+            var select = Collationhire.Find(it => it.Ses1id == HttpContext.Session.GetString("id")).ToList();
+
+            return View(select);
+        }
+
+        [HttpGet]
+        public IActionResult jobmeOK(string id) {
+            var upstatus = Builders<HIRE>.Update.Set(it => it.status, "2");
+
+            Collationhire.UpdateOne(it => it._id == id, upstatus);
+            return RedirectToAction("jobme");
         }
 
         [HttpGet]

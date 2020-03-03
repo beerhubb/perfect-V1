@@ -1,22 +1,15 @@
-﻿@model session.Models.Jregister
+﻿@model session.Models.Confirmed
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>รายละเอียดของงานนี้</h2>
 
 <div>
-    <h4>Jregister</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model._id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model._id)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.jname)
         </dt>
@@ -74,6 +67,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="profile">Back to List</a>
+    @Html.ActionLink("เสร็จแล้ว", "OK", new {  id = Model._id }) |
+    <a asp-action="Index">Back to List</a>
 </div>

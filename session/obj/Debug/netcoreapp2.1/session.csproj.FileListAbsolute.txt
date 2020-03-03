@@ -88,3 +88,5 @@ C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.dll
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.pdb
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.csproj.CopyComplete
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\pro1_1.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\jobme.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\Detailsjob.cshtml.g.cs

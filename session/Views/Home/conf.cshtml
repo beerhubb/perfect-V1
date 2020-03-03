@@ -16,7 +16,9 @@
             <th>
                 คนรับงาน
             </th>
-            <th></th>
+            <th>
+                สถานะงาน
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +32,29 @@
                     @Html.DisplayFor(modelItem => item.Sesid)
                 </td>
                 <td>
-                    @Html.ActionLink("เอาคนนี้", "get", new { id = item._id })
+                    @if (item.jstatus == "1")
+                    {@Html.ActionLink("เอาคนนี้", "get", new { id = item.Jid })}
+                else if (item.jstatus == "2")
+                {
+                    <div>กำลังดำเนินการ</div>
+                }
+                else if (item.jstatus == "3")
+                {
+                    <div>ดำเนินงานเสร็จแล้ว!!</div>
+                }
+                else if (item.jstatus == "4")
+                {
+                    <div>เรียบร้อย!!</div>
+                }
+                </td>
+                <td>
+                    @if (item.jstatus == "3")
+                    {
+                        <div class="btn btn-info">
+                            @Html.ActionLink("ยืนยัน", "finish", new { id = item.Jid })
+                        </div>
+                        <a href="#" class="btn btn-danger" role="button">ไม่ยอมรับ</a>
+                    }
                 </td>
             </tr>
         }
