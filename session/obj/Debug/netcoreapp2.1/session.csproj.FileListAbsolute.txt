@@ -90,3 +90,4 @@ C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.csproj
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\pro1_1.cshtml.g.cs
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\jobme.cshtml.g.cs
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\Detailsjob.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\editprofile.cshtml.g.cs

@@ -32,7 +32,7 @@ namespace session.Models
         public string jpictrue3 { get; set; }
 
         [Required]
-        [Display(Name = "รายละเอียด")]
+        [Display(Name = "รายละเอียด(วิธีทำงาน, เวลา)")]
         public string jdatail { get; set; }
 
         [Required]

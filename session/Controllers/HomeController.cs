@@ -248,6 +248,27 @@ namespace session.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult editprofile(string id)
+        {
+            ViewBag.use = HttpContext.Session.GetString("use");
+            var item = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+
+            return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult editprofile(Register data)
+        {
+            var item = Builders<Register>.Update
+                .Set(it => it.name, data.name)
+                .Set(it => it.age, data.age)
+                .Set(it => it.address, data.address)
+                .Set(it => it.pictrueP, data.pictrueP);
+            Collectionregis.UpdateOne(it => it._id == data._id, item);
+            
+            return RedirectToAction("");
+        }
+
         public IActionResult pro1_1()
         {
             ViewBag.use = HttpContext.Session.GetString("use");
@@ -276,7 +297,8 @@ namespace session.Controllers
             return RedirectToAction("pro1_2");
         }
 
-        public IActionResult Detailsjob(string id) {
+        public IActionResult Detailsjob(string id)
+        {
             ViewBag.use = HttpContext.Session.GetString("use");
             var select = Collationhire.Find(it => it._id == id).FirstOrDefault();
 
@@ -341,7 +363,8 @@ namespace session.Controllers
         }
 
         [HttpGet]
-        public IActionResult jobmeOK(string id) {
+        public IActionResult jobmeOK(string id)
+        {
             var upstatus = Builders<HIRE>.Update.Set(it => it.status, "2");
 
             Collationhire.UpdateOne(it => it._id == id, upstatus);

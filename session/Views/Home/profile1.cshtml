@@ -12,6 +12,9 @@
             <div class="media-body">
                 <h4>@ViewBag.name<small><i>  อายุ @ViewBag.age ปี</i></small></h4>
                 <p>ที่อยู่ : @ViewBag.add</p>
+                <div class="btn btn-success">
+                    @Html.ActionLink("แก้ไขโปรไฟล์", "editprofile", new { id = ViewBag.id })
+                </div>
             </div>
         </div>
         <hr />

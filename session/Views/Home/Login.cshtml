@@ -4,9 +4,16 @@
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="container-sm border ">
-    <h2>เข้าสู่ระบบ</h2>
+    <style>
+        body {
+            background-image: url('https://www.img.in.th/images/e6484f56d372a8ddc3bd51bf2d7a5875.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+<div class="container-sm border" style="body">
+    <h2><b>เข้าสู่ระบบ</b></h2>
 
     <hr />
     <div class="row">
@@ -28,10 +35,6 @@
                 </div>
             </form>
         </div>
-    </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
     </div>
 </div>
 
