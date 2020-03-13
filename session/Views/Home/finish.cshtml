@@ -1,0 +1,67 @@
+﻿@model session.Models.Register
+
+@{
+    ViewData["Title"] = "finish";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<br>
+<h2>ให้คะแนนความพึงพอใจ</h2>
+
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+            <p>
+                ดีมาก     :
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                @Html.ActionLink("ให้คะแนน", "star5", new { id = Model._id }, new { @class = "btn btn-success" })
+            </p>
+
+
+            <p>
+                ดี        :
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                @Html.ActionLink("ให้คะแนน", "star4", new { id = Model._id }, new { @class = "btn btn-success" })
+            </p>
+
+
+            <p>
+                พอใช้     :
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                @Html.ActionLink("ให้คะแนน", "star3", new { id = Model._id }, new { @class = "btn btn-success" })
+            </p>
+
+
+            <p>
+                แย่       :
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                @Html.ActionLink("ให้คะแนน", "star2", new { id = Model._id }, new { @class = "btn btn-success" })
+            </p>
+
+
+            <p>
+                ควรปรับปรุง :
+                <span class="glyphicon glyphicon-star"></span>
+                @Html.ActionLink("ให้คะแนน", "star1", new { id = Model._id }, new { @class = "btn btn-success" })
+            </p>
+
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

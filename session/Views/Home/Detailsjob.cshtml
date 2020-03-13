@@ -1,0 +1,37 @@
+﻿@model session.Models.HIRE
+
+@{
+    ViewData["Title"] = "Detailsjob";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+
+                    <div class="preview-pic tab-content">
+                        <div class="tab-pane active" id="pic-1"><img src="@Html.DisplayFor(model => model.jpictrue1)" width="600" height="400" /></div>
+                        <div class="tab-pane" id="pic-2"><img src="@Html.DisplayFor(model => model.jpictrue2)" width="600" height="400" /></div>
+                        <div class="tab-pane" id="pic-3"><img src="@Html.DisplayFor(model => model.jpictrue3)" width="600" height="400" /></div>
+                    </div>
+                    <ul class="preview-thumbnail nav nav-tabs">
+                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="@Html.DisplayFor(model => model.jpictrue1)" /></a></li>
+                        <li><a data-target="#pic-2" data-toggle="tab"><img src="@Html.DisplayFor(model => model.jpictrue2)" /></a></li>
+                        <li><a data-target="#pic-3" data-toggle="tab"><img src="@Html.DisplayFor(model => model.jpictrue3)" /></a></li>
+                    </ul>
+
+                </div>
+                <div class="details col-md-6">
+                    <h2><b>รายละเอียดงาน</b></h2>
+                    <h3 class="product-title">งาน : @Html.DisplayFor(model => model.jname)</h3>
+                    <p class="product-description">@Html.DisplayFor(model => model.jdatail)</p>
+                    <h4 class="price">ราคางาน : <span>@Html.DisplayFor(model => model.jprice)</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<session.Models.HIRE>
+
+@{
+    ViewData["Title"] = "jobme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>งานที่ว่าจ้าง</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ชื่อผู้รับงาน
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jdatail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jprice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ses2Nameid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jdatail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jprice)
+                    </td>
+                    <td>
+                        @if (item.status == null)
+                        {
+                            <div>รอการยืนยัน</div>
+                        }
+                        else if (item.status == "1")
+                        {
+                            <div>กำลังดำเนินการอยู่</div>
+                        }
+                        else if (item.status == "2")
+                        {
+                            <div>เรียบร้อย!</div>
+                        }
+                    </td>
+                    <td>
+                        @if (item.status == "1")
+                        {
+                            @Html.ActionLink("ยืนยัน", "jobmeOK", new { id = item._id }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("รายงานปัญหา!", "report", new { id = item._id }, new { @class = "btn btn-danger" })
+                        }
+                        else if (item.status == "2")
+                        {
+                            @Html.ActionLink("ให้คะแนน", "finishtostar", new { id = item.Ses2id }, new { @class = "btn btn-danger" })
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
