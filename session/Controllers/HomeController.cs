@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using session.Models;
+using System.IO;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace session.Controllers
 {
@@ -16,6 +18,7 @@ namespace session.Controllers
         private IMongoCollection<Jregister> CollectionJregis;
         private IMongoCollection<Confirmed> Collationconf;
         private IMongoCollection<HIRE> Collationhire;
+        private IMongoCollection<Star> CollationStar;
         public HomeController()
         {
             var dbcilent = new MongoClient("mongodb://Beeradmin:beer8640@cluster0-shard-00-00-pqdfa.azure.mongodb.net:27017,cluster0-shard-00-01-pqdfa.azure.mongodb.net:27017,cluster0-shard-00-02-pqdfa.azure.mongodb.net:27017/test?replicaSet=Cluster0-shard-0&ssl=true&authSource=admin");
@@ -24,7 +27,9 @@ namespace session.Controllers
             CollectionJregis = database.GetCollection<Jregister>("JREGISTER");
             Collationconf = database.GetCollection<Confirmed>("Confirmed");
             Collationhire = database.GetCollection<HIRE>("HIRE");
+            CollationStar = database.GetCollection<Star>("Star_Rating");
         }
+
         public IActionResult Index()
         {
             ViewBag.use = HttpContext.Session.GetString("use");
@@ -45,6 +50,11 @@ namespace session.Controllers
         {
             ViewBag.use = HttpContext.Session.GetString("use");
             ViewBag.status = HttpContext.Session.GetString("status");
+            ViewBag.s1 = HttpContext.Session.GetInt32("star1");
+            ViewBag.s2 = HttpContext.Session.GetInt32("star2");
+            ViewBag.s3 = HttpContext.Session.GetInt32("star3");
+            ViewBag.s4 = HttpContext.Session.GetInt32("star4");
+            ViewBag.s5 = HttpContext.Session.GetInt32("star5");
             var result = Collectionregis.Find(it => it.status == "1").ToList();
 
             return View(result);
@@ -101,6 +111,7 @@ namespace session.Controllers
                 Sesid = ViewBag.id,
                 Jid = datainp._id,
                 Bossid = datainp.Sesid,
+                Nsesid = ViewBag.name,
                 jname = datainp.jname,
                 jpictrue1 = datainp.jpictrue1,
                 jpictrue2 = datainp.jpictrue2,
@@ -113,7 +124,7 @@ namespace session.Controllers
                 jstatus = "1"
             };
             Collationconf.InsertOne(item);
-            return RedirectToAction("pro1_1");
+            return RedirectToAction("Index");
         }
 
         public IActionResult register()
@@ -136,7 +147,7 @@ namespace session.Controllers
                 address = data.address,
                 pictrue = data.pictrue,
                 pictrueP = data.pictrueP,
-                status = data.status
+                status = data.status,
             };
             Collectionregis.InsertOne(item);
 
@@ -197,7 +208,13 @@ namespace session.Controllers
                     HttpContext.Session.SetString("addr", user.address);
                     HttpContext.Session.SetString("pcc", user.pictrue);
                     HttpContext.Session.SetString("status", user.status);
-                    return RedirectToAction("profile1");
+                    HttpContext.Session.SetInt32("star1", user.star1);
+                    HttpContext.Session.SetInt32("star2", user.star2);
+                    HttpContext.Session.SetInt32("star3", user.star3);
+                    HttpContext.Session.SetInt32("star4", user.star4);
+                    HttpContext.Session.SetInt32("star5", user.star5);
+
+                    return RedirectToAction("Index");
                 }
                 else
                 {
@@ -209,12 +226,63 @@ namespace session.Controllers
                     HttpContext.Session.SetString("addr", user.address);
                     HttpContext.Session.SetString("pcc", user.pictrue);
                     HttpContext.Session.SetString("status", user.status);
-                    return RedirectToAction("profile2");
+                    return RedirectToAction("Index");
                 }
             }
             else
             {
-                return RedirectToAction("Error");
+                return RedirectToAction("Login1");
+            }
+        }
+
+        public IActionResult Login1()
+        {
+            ViewBag.use = HttpContext.Session.GetString("use");
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login1(Login data)
+        {
+            var user = Collectionregis.Find(it => it.username == data.username && it.password == data.password).FirstOrDefault();
+
+            if (user != null)
+            {
+                if (user.status == "1")
+                {
+                    HttpContext.Session.SetString("use", data.username);
+                    HttpContext.Session.SetString("id", user._id);
+                    HttpContext.Session.SetString("Uname", user.name);
+                    HttpContext.Session.SetString("Pic", user.pictrueP);
+                    HttpContext.Session.SetString("age", user.age);
+                    HttpContext.Session.SetString("addr", user.address);
+                    HttpContext.Session.SetString("pcc", user.pictrue);
+                    HttpContext.Session.SetString("status", user.status);
+                    HttpContext.Session.SetInt32("star1", user.star1);
+                    HttpContext.Session.SetInt32("star2", user.star2);
+                    HttpContext.Session.SetInt32("star3", user.star3);
+                    HttpContext.Session.SetInt32("star4", user.star4);
+                    HttpContext.Session.SetInt32("star5", user.star5);
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    HttpContext.Session.SetString("use", data.username);
+                    HttpContext.Session.SetString("id", user._id);
+                    HttpContext.Session.SetString("Uname", user.name);
+                    HttpContext.Session.SetString("Pic", user.pictrueP);
+                    HttpContext.Session.SetString("age", user.age);
+                    HttpContext.Session.SetString("addr", user.address);
+                    HttpContext.Session.SetString("pcc", user.pictrue);
+                    HttpContext.Session.SetString("status", user.status);
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                return View();
             }
         }
 
@@ -227,8 +295,14 @@ namespace session.Controllers
             ViewBag.age = HttpContext.Session.GetString("age");
             ViewBag.add = HttpContext.Session.GetString("addr");
             ViewBag.status = HttpContext.Session.GetString("status");
+            ViewBag.s1 = HttpContext.Session.GetInt32("star1");
+            ViewBag.s2 = HttpContext.Session.GetInt32("star2");
+            ViewBag.s3 = HttpContext.Session.GetInt32("star3");
+            ViewBag.s4 = HttpContext.Session.GetInt32("star4");
+            ViewBag.s5 = HttpContext.Session.GetInt32("star5");
 
-            return View();
+            var result = Collationconf.Find(it => it.Sesid == HttpContext.Session.GetString("id")).ToList();
+            return View(result);
         }
 
         public IActionResult profile2()
@@ -240,12 +314,8 @@ namespace session.Controllers
             ViewBag.age = HttpContext.Session.GetString("age");
             ViewBag.add = HttpContext.Session.GetString("addr");
             ViewBag.status = HttpContext.Session.GetString("status");
-            if (ViewBag.use != null)
-            {
-                var result = CollectionJregis.Find(it => it.Sesid == HttpContext.Session.GetString("id")).ToList();
-                return View(result);
-            }
-            return RedirectToAction("Index");
+            var result = CollectionJregis.Find(it => it.Sesid == HttpContext.Session.GetString("id")).ToList();
+            return View(result);
         }
 
         public IActionResult editprofile(string id)
@@ -265,18 +335,8 @@ namespace session.Controllers
                 .Set(it => it.address, data.address)
                 .Set(it => it.pictrueP, data.pictrueP);
             Collectionregis.UpdateOne(it => it._id == data._id, item);
-            
+
             return RedirectToAction("");
-        }
-
-        public IActionResult pro1_1()
-        {
-            ViewBag.use = HttpContext.Session.GetString("use");
-            ViewBag.id = HttpContext.Session.GetString("id");
-
-            var result = Collationconf.Find(it => it.Sesid == HttpContext.Session.GetString("id")).ToList();
-
-            return View(result);
         }
 
         public IActionResult pro1_2()
@@ -343,13 +403,86 @@ namespace session.Controllers
         }
 
         [HttpGet]
-        public IActionResult finish(string id)
+        public IActionResult finish(string id, Register data)
         {
+            var item = Collationconf.Find(it => it.Jid == id).FirstOrDefault();
             var def = Builders<Confirmed>.Update.Set(it => it.jstatus, "4");
             var upregis = Builders<Jregister>.Update.Set(it => it.jstatus, "2");
 
-            Collationconf.UpdateOne(it => it.Jid == id, def);
+            Collationconf.UpdateOne(it => it._id == item._id, def);
             CollectionJregis.UpdateOne(it => it._id == id, upregis);
+            return RedirectToAction("profile2");
+        }
+
+        public IActionResult finishtostar(string id)
+        {
+            ViewBag.use = HttpContext.Session.GetString("use");
+            try
+            {
+                var select = Collationconf.Find(it => it.Jid == id).FirstOrDefault();
+                var item = Collectionregis.Find(it => it._id == select.Sesid).FirstOrDefault();
+
+                return View(item);
+            }
+            catch (Exception e)
+            {
+                var me = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+
+                return View(me);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult star1(string id)
+        {
+            var star = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+            var upstar = Builders<Register>.Update.Set(it => it.star1, star.star1 + 1);
+
+            Collectionregis.UpdateOne(it => it._id == id, upstar);
+            return RedirectToAction("profile2");
+        }
+
+        [HttpGet]
+        public IActionResult star2(string id)
+        {
+            var star = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+            var upstar = Builders<Register>.Update.Set(it => it.star2, star.star2 + 1);
+
+            Collectionregis.UpdateOne(it => it._id == id, upstar);
+
+            return RedirectToAction("profile2");
+        }
+
+        [HttpGet]
+        public IActionResult star3(string id)
+        {
+            var star = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+            var upstar = Builders<Register>.Update.Set(it => it.star3, star.star3 + 1);
+
+            Collectionregis.UpdateOne(it => it._id == id, upstar);
+
+            return RedirectToAction("profile2");
+        }
+
+        [HttpGet]
+        public IActionResult star4(string id)
+        {
+            var star = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+            var upstar = Builders<Register>.Update.Set(it => it.star4, star.star4 + 1);
+
+            Collectionregis.UpdateOne(it => it._id == id, upstar);
+
+            return RedirectToAction("profile2");
+        }
+
+        [HttpGet]
+        public IActionResult star5(string id)
+        {
+            var star = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+            var upstar = Builders<Register>.Update.Set(it => it.star5, star.star5 + 1);
+
+            Collectionregis.UpdateOne(it => it._id == id, upstar);
+
             return RedirectToAction("profile2");
         }
 
@@ -371,17 +504,33 @@ namespace session.Controllers
             return RedirectToAction("jobme");
         }
 
+        public IActionResult Upload()
+        {
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult del(string id)
+        {
+
+            Collationconf.DeleteOne(it => it.Jid == id);
+            return RedirectToAction("conf");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(string id)
+        {
+
+            Collationhire.DeleteOne(it => it._id == id);
+            return RedirectToAction("pro1_2");
+        }
+
         [HttpGet]
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("use");
             return RedirectToAction("Index");
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

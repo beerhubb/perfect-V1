@@ -5,68 +5,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>รายละเอียดของงานนี้</h2>
+<br>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.jname)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.jname)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.jpictrue1)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.jpictrue1)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.jpictrue2)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.jpictrue2)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.jpictrue3)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.jpictrue3)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.jdatail)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.jdatail)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.jaddress)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.jaddress)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.jprice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.jprice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.jline)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.jline)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.jphone)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.jphone)
-        </dd>
-    </dl>
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+
+                    <div class="preview-pic tab-content">
+                        <div class="tab-pane active" id="pic-1"><img src="@Html.DisplayFor(model => model.jpictrue1)" width="600" height="400" /></div>
+                        <div class="tab-pane" id="pic-2"><img src="@Html.DisplayFor(model => model.jpictrue2)" width="600" height="400" /></div>
+                        <div class="tab-pane" id="pic-3"><img src="@Html.DisplayFor(model => model.jpictrue3)" width="600" height="400" /></div>
+                    </div>
+                    <ul class="preview-thumbnail nav nav-tabs">
+                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="@Html.DisplayFor(model => model.jpictrue1)" /></a></li>
+                        <li><a data-target="#pic-2" data-toggle="tab"><img src="@Html.DisplayFor(model => model.jpictrue2)" /></a></li>
+                        <li><a data-target="#pic-3" data-toggle="tab"><img src="@Html.DisplayFor(model => model.jpictrue3)" /></a></li>
+                    </ul>
+
+                </div>
+                <div class="details col-md-6">
+                    <h2><b>รายละเอียดงาน</b></h2>
+                    <h3 class="product-title">งาน : @Html.DisplayFor(model => model.jname)</h3>
+                    <p class="product-description">@Html.DisplayFor(model => model.jdatail)</p>
+                    <h4 class="price">ราคางาน : <span>@Html.DisplayFor(model => model.jprice)</span></h4>
+                    <div class="action">
+                        @Html.ActionLink("เสร็จแล้ว", "OK", new { id = Model._id }, new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    @Html.ActionLink("เสร็จแล้ว", "OK", new {  id = Model._id }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+

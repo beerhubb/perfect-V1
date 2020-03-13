@@ -4,38 +4,96 @@
     ViewData["Title"] = "maid";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<br>
+<h2><b>ผู้ที่ต้องการหางานทำ</b></h2>
+<hr style="border: 2px solid Gray;" />
+@foreach (var item in Model)
+{
+    var ss1 = (item.star1 * 1);
+    var ss2 = (item.star2 * 2);
+    var ss3 = (item.star3 * 3);
+    var ss4 = (item.star4 * 4);
+    var ss5 = (item.star5 * 5);
+    double sss = ss1 + ss2 + ss3 + ss4 + ss5;
+    var sta = (item.star1 + item.star2 + item.star3 + item.star4 + item.star5);
+    double sstar = sss / sta;
+    string str = String.Format("{0:F2}", sstar);
 
-<h2>แม่บ้านของเรา</h2>
+    @if (item.status == "1")
+    {
+        <div class="container">
+            <div class="row">
 
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-
-            <h2>Card Image</h2>
-            <div class="card" style="width:400px">
-                <img class="card-img-top" src="@Html.DisplayFor(model => item.pictrueP)" alt="Card image" style="width:70%">
-                <div class="card-body">
-                    <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
-                    <p class="card-text">
-                        อายุ :@Html.DisplayFor(model => item.age) ปี  ที่อยู่ :@Html.DisplayFor(model => item.address)   @if (item.status == "1")
-                        {<h5>แม่บ้าน</h5>}
-                    </p>
-                    @if (ViewBag.use != null && ViewBag.status == "2")
-                    {
-                        @Html.ActionLink("จ้างคนนี้", "hire", new { id = item._id })
-                    }
-                    else
-                    {
-                        <a asp-area="" asp-controller="Home" asp-action="Login">เข้าสู่ระบบเพื่อจ้างงาน</a>
-                    }
-
+                <div class="col-md-6 img">
+                    <img src="@Html.DisplayFor(model => item.pictrueP)" alt="" class="img-rounded" width="400" height="350">
                 </div>
+                <div class="col-md-6 details">
+                    <blockquote>
+                        <h5><b>ชื่อ</b> :@Html.DisplayFor(model => item.name)</h5>
+                        <small><cite title="Source Title">ที่อยู่ : @Html.DisplayFor(model => item.address)  <i class="icon-map-marker"></i></cite></small>
+                        @if (str == "NaN")
+                        {
+                            <h3><b>ความพึงพอใจ  0.00</b></h3>
+                        }
+                        else
+                        {
+                            <h3><b>ความพึงพอใจ  @str</b></h3>
+                        }
+
+                        @if (sstar >= 5)
+                        {
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                        }
+                        else if (sstar >= 4)
+                        {
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                        }
+                        else if (sstar >= 3)
+                        {
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                        }
+                        else if (sstar >= 2)
+                        {
+                            <i class="material-icons" style="font-size:36px">star</i>
+                            <i class="material-icons" style="font-size:36px">star</i>
+                        }
+                        else if (sstar >= 1)
+                        {
+                            <i class="material-icons" style="font-size:36px">star</i>
+                        }
+
+                    </blockquote>
+                    <p>
+                        @if (item.status == "1")
+                        {<div><b>อาชีพ</b> :ผู้รับงาน</div>} <br>
+
+                        อายุ : @Html.DisplayFor(model => item.age) ปี
+                        @if (ViewBag.use != null && ViewBag.status == "2")
+                        {
+                            @Html.ActionLink("กรอกข้อมูลเพื่อจ้างงานคนนี้", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                        }
+                        else
+                        {
+                            <a href="Login" class="btn btn-success" role="button">เข้าสู่ระบบเพื่อจ้าง</a>
+                        }
+                    </p>
+                </div>
+
             </div>
-            <hr />
-            @*
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
-        }
-    </div>
-</div>
+        </div>
+        <hr />
+    }
+}
+
+@*
+    }*@

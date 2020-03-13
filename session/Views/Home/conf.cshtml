@@ -4,8 +4,11 @@
     ViewData["Title"] = "conf";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br>
+<br>
 
-<h2>คนที่รับงานนี้</h2>
+<h2>คนที่รับงานนี้ </h2>
+<hr />
 
 <table class="table">
     <thead>
@@ -22,41 +25,60 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.jname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sesid)
-                </td>
-                <td>
-                    @if (item.jstatus == "1")
-                    {@Html.ActionLink("เอาคนนี้", "get", new { id = item.Jid })}
-                else if (item.jstatus == "2")
-                {
-                    <div>กำลังดำเนินการ</div>
-                }
-                else if (item.jstatus == "3")
-                {
-                    <div>ดำเนินงานเสร็จแล้ว!!</div>
-                }
-                else if (item.jstatus == "4")
-                {
-                    <div>เรียบร้อย!!</div>
-                }
-                </td>
-                <td>
-                    @if (item.jstatus == "3")
-                    {
-                        <div class="btn btn-info">
-                            @Html.ActionLink("ยืนยัน", "finish", new { id = item.Jid })
-                        </div>
-                        <a href="#" class="btn btn-danger" role="button">ไม่ยอมรับ</a>
-                    }
-                </td>
-            </tr>
+            @if (item.jstatus == "1")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nsesid)
+                    </td>
+                    <td>
+                        @if (item.jstatus == "1")
+                        {
+                            @Html.ActionLink("เลือกคนนี้", "get", new { id = item.Jid }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("ไม่เลือก", "del", new { id = item.Jid }, new { @class = "btn btn-danger" })
+                        }
+                    </td>
+                </tr>
+            }
+            else if (item.jstatus == "2" || item.jstatus == "3" || item.jstatus == "4")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nsesid)
+                    </td>
+                    <td>
+                        @if (item.jstatus == "2")
+                        {
+                            <div>กำลังดำเนินการ</div>
+                        }
+                        else if (item.jstatus == "3")
+                        {
+                            <div>ดำเนินงานเสร็จแล้ว!!</div>
+                        }
+                        else if (item.jstatus == "4")
+                        {
+                            <div>เรียบร้อย!!</div>
+                        }
+                    </td>
+                    <td>
+                        @if (item.jstatus == "3")
+                        {
+                            @Html.ActionLink("ยืนยัน", "finish", new { id = item.Jid }, new { @class = "btn btn-success" })
+                            <a href="#" class="btn btn-danger" role="button">รายงาน</a>
+                        }
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>
+

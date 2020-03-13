@@ -4,9 +4,9 @@
     ViewData["Title"] = "pro1_2";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<br>
 <h2>งานนที่ถูกว่าจ้าง</h2>
-
+<br>
 <table class="table">
     <thead>
         <tr>
@@ -57,16 +57,12 @@
                 <td>
                     @if (item.status == null)
                     {
-                        <div class="btn btn-info">
-                            @Html.ActionLink("ยอมรับ", "select", new { id = item._id })
-                        </div>
-                        <div class="btn btn-danger">
-                            @Html.ActionLink("ไม่รับงานนี้", "Delete", new { id = item._id })
-                        </div>
+                            @Html.ActionLink("ยอมรับ", "select", new { id = item._id },new { @class="btn btn-info"})
+                            @Html.ActionLink("ไม่รับงานนี้", "Delete", new { id = item._id },new { @class="btn btn-danger"})
                     }
                     else if (item.status == "1")
                     {
-                        @Html.ActionLink("รายละเอียดการติดต่อ", "Detailsjob", new { id = item._id })
+                        @Html.ActionLink("รายละเอียดการติดต่อ", "Detailsjob", new { id = item._id },new { @class="btn btn-warning"})
                     }
 
                 </td>

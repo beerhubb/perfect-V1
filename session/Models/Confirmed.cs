@@ -13,13 +13,20 @@ namespace session.Models
         public string _id { get; set; }
 
         [Required]
+        [Display(Name = "ไอดีคนงาน")]
         public string Sesid { get; set; }
 
         [Required]
+        [Display(Name = "ไอดีงาน")]
         public string Jid { get; set; }
 
         [Required]
+        [Display(Name = "ไอดีคนสร้างงาน")]
         public string Bossid { get; set; }
+
+        [Required]
+        [Display(Name ="คนที่รับงานนี้")]
+        public string Nsesid { get; set; }
 
         [Required]
         [Display(Name = "ชื่องาน")]

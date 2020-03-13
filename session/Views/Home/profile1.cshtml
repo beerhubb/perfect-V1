@@ -1,24 +1,133 @@
-﻿
+﻿@model IEnumerable<session.Models.Confirmed>
+
 @{
     ViewData["Title"] = "profile1";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .details li {
+        list-style: none;
+    }
 
-<div class="container p-3 my-3 border">
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+<br>
+<br>
+<div class="container">
     <div class="jumbotron">
-        <h2><b>โปรไฟล์ของฉัน</b></h2>
-        <div class="media border p-3">
-            <img src="@ViewBag.pictrue" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-            <div class="media-body">
-                <h4>@ViewBag.name<small><i>  อายุ @ViewBag.age ปี</i></small></h4>
-                <p>ที่อยู่ : @ViewBag.add</p>
-                <div class="btn btn-success">
-                    @Html.ActionLink("แก้ไขโปรไฟล์", "editprofile", new { id = ViewBag.id })
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img src="@ViewBag.pictrue" alt="stack photo" class="img" width="280" height="230">
+            </div>
+            <div class="col-md-6 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom: 1px solid black">
+                    <h2>ชื่อ @ViewBag.name</h2>
                 </div>
+                <hr>
+                <ul class="container details">
+                    <div class="col-md-6 col-sm-6">
+                        <li><p><span class="glyphicon glyphicon-user" style="width:50px;"></span>@ViewBag.age ปี</p></li>
+                        @if (ViewBag.status == "1")
+                        {
+                            <li><p><span class="glyphicon glyphicon-ok-sign" style="width:50px;"></span>ผู้รับงาน</p></li>
+                        }
+                        <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>@ViewBag.add</p></li>
+                        @Html.ActionLink("แก้ไขโปรไฟล์", "editprofile", new { id = ViewBag.id }, new { @class = "btn btn-warning" })
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <h4><b>ความพึงพอใจ</b></h4>
+                        <hr>
+                        <p>
+                            @ViewBag.s5 คน <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </p>
+
+                        <p>
+                            @ViewBag.s4 คน <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </p>
+
+                        <p>
+                            @ViewBag.s3 คน <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </p>
+
+                        <p>
+                            @ViewBag.s2 คน <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </p>
+
+                        <p>
+                            @ViewBag.s1 คน <span class="glyphicon glyphicon-star"></span>
+                        </p>
+                    </div>
+                </ul>
             </div>
         </div>
-        <hr />
-        <a href="pro1_1" class="btn btn-info" role="button">งานของฉัน</a>
-        <a href="pro1_2" class="btn btn-info" role="button">งานที่ถูกว่าจ้าง</a>
     </div>
 </div>
+
+<a href="pro1_2" class="btn btn-success" role="button">งานที่ถูกว่าจ้าง</a>
+
+<br>
+<br>
+<h2>งานของฉัน</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.jname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jdatail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jaddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jstatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jdatail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jaddress)
+                </td>
+                <td>
+                    @if (item.jstatus == "1")
+                    {<div>รอการยืนยัน</div>}
+                    else if (item.jstatus == "2")
+                    {<div>อนุมัติแล้ว</div>}
+                    else if (item.jstatus == "3")
+                    {<div>ทำเสร็จแล้ว</div>}
+                    else if (item.jstatus == "4")
+                    {
+                        <div>สำเสร็จ!!</div>
+                    }
+                </td>
+                <td>
+                    @if (item.jstatus == "2")
+                    {@Html.ActionLink("รายละเอียด", "Details", new { id = item._id }, new { @class = "btn btn-warning" })}
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

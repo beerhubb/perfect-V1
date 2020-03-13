@@ -5,44 +5,43 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>เลือกงาน</h2>
 <hr />
-<div class="container">
+<h2><b>รายชื่องานในเขตพื้นที่ศรีสะเกษ</b></h2>
+<hr style="border: 2px solid Gray;" />
+<div class="container-fluid topDest">
     <div class="row">
         @foreach (var item in Model)
         {
             @if (item.jstatus != "2")
             {
-                <div class="col-md-4 mx-auto mt-5">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="@Html.DisplayFor(model => item.jpictrue1)" class="card-img" alt="..." style="width: 128px; height: 128px;">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title"><b>ชื่องาน</b> @Html.DisplayFor(model => item.jname)</h5>
-                                    <p class="card-text"><b>รายละเอียด</b> : @Html.DisplayFor(model => item.jdatail)</p>
-                                    <p class="card-text"><small class="text-muted"><b>ราคา</b> : @Html.DisplayFor(model => item.jprice)</small></p>
 
-                                    @if (@ViewBag.use != null && ViewBag.status == "1")
-                                    {
-                                        <div class="btn btn-info">
-                                            @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id })
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="btn btn-info">
-                                            <a asp-area="" asp-controller="Home" asp-action="Login">เข้าสู่ระบบเพื่อรับงาน</a>
-                                        </div>
-                                    }
-                                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <a href="#myModal" data-toggle="modal" class="destLinks">
+                        <div class="destiBoxWrap">
+                            <img src="@Html.DisplayFor(model => item.jpictrue1)" alt="Image" title="Project" class="img-responsive width100">
+                            <div class="destiBox hangBox">
+                                <h4> @Html.DisplayFor(model => item.jname)</h4>
+                                <h5> @Html.DisplayFor(model => item.jdatail) </h5>
+                                <h4 class="col1">@Html.DisplayFor(modell => item.jprice)</h4>
+                                @if (@ViewBag.use != null && ViewBag.status == "1")
+                                {
+                                    @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id }, new { @class = "btn btn-info", onclick = "displayDate()" })
+                                    <script>
+                                        function displayDate() {
+                                            alert("คุณได้กดรับงานนนี้แล้ว!");
+                                        }
+                                    </script>
+                                }
+                                else
+                                {
+                                    <a href="Home/Login" class="btn btn-success" role="button">เข้าสู่ระบบก่อน!</a>
+                                }
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             }
         }
+
     </div>
 </div>

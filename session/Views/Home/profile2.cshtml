@@ -4,88 +4,119 @@
     ViewData["Title"] = "profile2";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .details li {
+        list-style: none;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+<br>
+<br>
 <div class="container">
-    <div class="container p-3 my-3 border">
-        <div class="jumbotron">
-            <h2><b>โปรไฟล์ของฉัน</b></h2>
-            <div class="media border p-3">
-                <img src="@ViewBag.pictrue" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                <div class="media-body">
-                    <h4>@ViewBag.name<small><i>  อายุ @ViewBag.age ปี</i></small></h4>
-                    <p>ที่อยู่ : @ViewBag.add</p>
-                    <a href="#" class="btn btn-info" role="button">แก้ไขโปรไฟล์</a>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img src="@ViewBag.pictrue" alt="stack photo" class="img" width="290" height="270">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom: 1px solid black">
+                    <h2>ชื่อ @ViewBag.name</h2>
                 </div>
+                <hr>
+                <ul class="container details">
+                    <li><p><span class="glyphicon glyphicon-user" style="width:50px;"></span>@ViewBag.age ปี</p></li>
+                    @if (ViewBag.status == "2")
+                    {
+                        <li><p><span class="glyphicon glyphicon-ok-sign" style="width:50px;"></span> ผู้จ้างงาน</p></li>
+                    }
+                    <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>@ViewBag.add</p></li>
+                    @Html.ActionLink("แก้ไขโปรไฟล์", "editprofile", new { id = ViewBag.id }, new { @class = "btn btn-warning" })
+                </ul>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <a href="jobme" class="btn btn-info" role="button">งานที่ฉันว่าจ้าง</a>
-        <h2><b>งานของฉัน</b></h2>
-        <table class="table">
-            <thead>
+<div class="container">
+    <a href="jobme" class="btn btn-info" role="button">งานที่ฉันว่าจ้าง</a>
+    <h2><b>งานของฉัน</b></h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.jname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jdatail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jaddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jprice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jphone)
+                </th>
+                <th>
+                    สถานะ
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.jname)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.jdatail)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.jaddress)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.jprice)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.jline)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.jphone)
-                    </th>
-                    <th>
-                        สถานะ
-                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jdatail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jaddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jprice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jphone)
+                    </td>
+                    <td>
+                        @if (item.jstatus == null)
+                        {<div>ว่าง</div>}
+                        else if (item.jstatus == "1")
+                        {<div>กำลังดำเนิน</div>}
+                        else if (item.jstatus == "2")
+                        {<div>เสร็จแล้ว!!</div>}
+                    </td>
+                    <td>
+                        @if (item.jstatus == null)
+                        {
+                            @Html.ActionLink("คนที่รับงานนี้", "conf", new { id = item._id }, new { @class = "btn btn-success" })
+                        }
+                        else if (item.jstatus == "1")
+                        {
+                            @Html.ActionLink("รายละเอียด", "conf", new { id = item._id }, new { @class = "btn btn-success" })
+                        }
+                        else if (item.jstatus == "2")
+                        {
+
+                            @Html.ActionLink("ให้คะแนน", "finishtostar", new { id = item._id }, new { @class = "btn btn-danger" })
+                        }
+
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.jname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.jdatail)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.jaddress)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.jprice)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.jline)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.jphone)
-                        </td>
-                        <td>
-                            @if (item.jstatus == null)
-                            {<div>ว่าง</div>}
-                            else if (item.jstatus == "1")
-                            {<div>กำลังดำเนินการ</div>}
-                            else if (item.jstatus == "2")
-                            {<div>สำเร็จ!</div>}
-                        </td>
-                        <td>
-                            @if (item.jstatus == null)
-                            {@Html.ActionLink("คนที่รับงานนี้", "conf", new { id = item._id })}
-                            @Html.ActionLink("รายละเอียด", "conf", new { id = item._id })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
 </div>
