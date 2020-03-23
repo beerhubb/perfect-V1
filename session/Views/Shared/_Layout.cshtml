@@ -14,9 +14,8 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     </environment>
-    <style>
-    </style>
 </head>
 <body style="body">
     <nav class="navbar navbar-inverse bg-primary navbar-fixed-top">
@@ -28,35 +27,53 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">งานศรีสะเกษ</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand "><h4><b>งานศรีสะเกษ</b></h4></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">หน้าแรก</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="maid">ผู้ต้องการงาน</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">คำถามที่พบบ่อย</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index"><h4><b>หน้าแรก</b></h4></a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><h4><b>ค้นหางาน</b></h4></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item active" asp-controller="Home" asp-action="job1"><h4><b>งานบ้าน</b></h4></a>
+                            <a class="dropdown-item active" asp-controller="Home" asp-action="job2"><h4><b>งานสวน</b></h4></a>
+                            <a class="dropdown-item active" asp-controller="Home" asp-action="job3"><h4><b>งานใช้แรง</b></h4></a>
+                            <a class="dropdown-item active" asp-controller="Home" asp-action="job4"><h4><b>งานอื่นๆ</b></h4></a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><h4><b>ค้นหาผู้รับงาน</b></h4></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-controller="Home" asp-action="maid"><h4><b>งานบ้าน</b></h4></a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="maid1"><h4><b>งานสวน</b></h4></a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="maid2"><h4><b>งานใช้แรง</b></h4></a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="maid3"><h4><b>งานอื่นๆ</b></h4></a>
+                        </div>
+                    </li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About"><h4><b>เกี่ยวกับ</b></h4></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (ViewBag.use == null)
                     {
-                        <li><a asp-area="" asp-controller="Home" asp-action="Login">เข้าสู่ระบบ</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="register">สมัครสมาชิก</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Login"><h4><b>เข้าสู่ระบบ</b></h4></a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="register"><h4><b>สมัครเป็นผู้รับงาน</b></h4></a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="register2"><h4><b>สมัครเป็นผู้จ้างงาน</b></h4></a></li>
                     }
                     else
                     {
                         @if (ViewBag.status == "2")
                         {
-                            <li><a asp-area="" asp-controller="Home" asp-action="Jregis">สร้างงาน</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Jregis"><h4><b>สร้างงาน</b></h4></a></li>
                         }
                         @if (ViewBag.status == "1")
                         {
-                            <li><a asp-area="" asp-controller="Home" asp-action="profile1">โปรไฟล์</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="profile1"><h4><b>โปรไฟล์</b></h4></a></li>
                         }
                         else
                         {
-                            <li><a asp-area="" asp-controller="Home" asp-action="profile2">โปรไฟล์</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="profile2"><h4><b>โปรไฟล์</b></h4></a></li>
                         }
-                        <li><a asp-area="" asp-controller="Home" asp-action="Logout">ออกจากระบบ</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Logout"><h4><b>ออกจากระบบ</b></h4></a></li>
                     }
                 </ul>
             </div>

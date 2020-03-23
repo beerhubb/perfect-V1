@@ -19,25 +19,16 @@ namespace session.Models
         public string Maidid { get; set; }
 
         [Required]
-        [Display(Name = "1 ดาว")]
-        public int star1 { get; set; }
+        [Display(Name ="ผู้ให้คะแนน")]
+        public string namesesid { get; set; }
 
         [Required]
-        [Display(Name = "2 ดาว")]
-        public int star2 { get; set; }
+        [Display(Name = "ความพึงพอใจ")]
+        public string star { get; set; }
 
         [Required]
-        [Display(Name = "3 ดาว")]
-        public int star3 { get; set; }
-
-        [Required]
-        [Display(Name = "4 ดาว")]
-        public int star4 { get; set; }
-        
-        [Required]
-        [Display(Name ="5 ดาว")]
-        public int star5 { get; set; }
-
-        public string status { get; set; }
+        [Display(Name ="แสดงความคิดเห็น")]
+        [StringLength(250)]
+        public string comment { get; set; }
     }
 }

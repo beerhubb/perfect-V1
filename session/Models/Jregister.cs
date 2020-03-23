@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +15,10 @@ namespace session.Models
 
         [Required]
         public string Sesid { get; set; }
+
+        [Required]
+        [Display(Name = "ประเภทงาน")]
+        public string statusjob { get; set; }
 
         [Required]
         [Display(Name = "ชื่องาน")]
@@ -32,7 +37,7 @@ namespace session.Models
         public string jpictrue3 { get; set; }
 
         [Required]
-        [Display(Name = "รายละเอียด(วิธีทำงาน, เวลา)")]
+        [Display(Name = "รายละเอียด")]
         public string jdatail { get; set; }
 
         [Required]
@@ -54,5 +59,10 @@ namespace session.Models
         [Required]
         [Display(Name = "สถานะ")]
         public string jstatus { get; set; }
+
+        [Display(Name = "วันที่ทำงาน")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
+        public string date { get; set; }
     }
 }

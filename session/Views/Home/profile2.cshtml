@@ -97,7 +97,9 @@
                         else if (item.jstatus == "1")
                         {<div>กำลังดำเนิน</div>}
                         else if (item.jstatus == "2")
-                        {<div>เสร็จแล้ว!!</div>}
+                        {<div>ให้คะแนนความพึงพอใจ</div>}
+                        else if (item.jstatus == "3")
+                        {<div>สำเร็จ!!</div>}
                     </td>
                     <td>
                         @if (item.jstatus == null)
@@ -110,10 +112,8 @@
                         }
                         else if (item.jstatus == "2")
                         {
-
                             @Html.ActionLink("ให้คะแนน", "finishtostar", new { id = item._id }, new { @class = "btn btn-danger" })
                         }
-
                     </td>
                 </tr>
             }

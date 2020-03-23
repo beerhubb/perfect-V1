@@ -34,8 +34,21 @@ namespace session.Models
         public string address { get; set; }
 
         [Required]
-        [Display(Name ="รูปบัตรประชาชน")]
+        [Display(Name ="รหัสบัตรประชาชน")]
+        [StringLength(14,MinimumLength = 13)]
         public string pictrue { get; set; }
+
+        [Required]
+        [Display(Name = "เบอร์โทรศัพท์")]
+        public string phon { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "ID-Line")]
+        public string line { get; set; }
 
         [Required]
         [Display(Name ="รูปโปรไฟล์")]
@@ -44,6 +57,24 @@ namespace session.Models
         [Required]
         [Display(Name ="สถานะ")]
         public string status { get; set; }
+
+        [Required]
+        [Display(Name = "แม่บ้าน")]
+        public string skill1 { get; set; }
+
+        [Required]
+        [Display(Name = "ทำสวน")]
+        public string skill2 { get; set; }
+
+        [Required]
+        [Display(Name = "ใช้แรงงาน")]
+        public string skill3 { get; set; }
+
+        [Required]
+        [Display(Name = "อื่นๆ")]
+        public string skill4 { get; set; }
+
+        //**//
 
         [Required]
         [Display(Name = "1 ดาว")]
@@ -64,9 +95,5 @@ namespace session.Models
         [Required]
         [Display(Name = "5 ดาว")]
         public int star5 { get; set; }
-
-        [Required]
-        [Display(Name = "ความพึงพอใจ")]
-        public string result { get; set; }
     }
 }

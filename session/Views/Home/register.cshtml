@@ -6,9 +6,8 @@
 }
 
 <div class="container">
-
+    <br>
     <h2 class="text-center"><b>สมัครสมาชิก</b></h2>
-
     <hr />
     <form asp-action="register" class="form-horizontal">
         <fieldset>
@@ -48,14 +47,32 @@
                     <span asp-validation-for="address" class="text-danger"></span>
                 </div>
             </div>
-            <div class="col-md-4 control-label">
-                <a href="https://uppic.cc/?fbclid=IwAR0aPysKDeUBRNr8WJU11KKoGHvYNjWH7N_zG9DYtwWXSXPpnjO6HHHt2Bk" target="_blank" class="btn btn-info" role="button">ฝากรูป!!</a>
-            </div>
             <div class="form-group">
                 <label asp-for="pictrue" class="col-md-4 control-label"></label>
                 <div class="col-md-4">
-                    <input asp-for="pictrue" placeholder="https://uppic.cc/?fbclid=IwAR0aPysKDeUBRNr8WJU11KKoGHvYNjWH7N_zG9DYtwWXSXPpnjO6HHHt2Bk" class="form-control" />
+                    <input asp-for="pictrue" placeholder="1330822456727" class="form-control" />
                     <span asp-validation-for="pictrue" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="phon" class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <input asp-for="phon" placeholder="0819442133" class="form-control" />
+                    <span asp-validation-for="phon" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <input asp-for="Email" placeholder="admin1234@gmail.com" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="line" class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <input asp-for="line" placeholder="admin_1234" class="form-control" />
+                    <span asp-validation-for="line" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4 control-label">
@@ -68,12 +85,40 @@
                     <span asp-validation-for="pictrueP" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-8 control-label">
-                    <input type="radio" asp-for="status" id="gender" value="1"> ผู้รับงาน
-                    <input type="radio" asp-for="status" id="gender" value="2"> ผู้จ้างงาน
-                </div>
-            </div>
+            <ol>
+                <li>
+                    <div class="form-group">
+                        <div class="col-md-8 control-label">
+                            <input type="radio" asp-for="skill1" id="check11" value=""> ไม่ใช่
+                            <input type="radio" asp-for="skill1" id="check1" value="1"> งานบ้าน
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-group">
+                        <div class="col-md-8 control-label">
+                            <input type="radio" asp-for="skill2" id="check22" value=""> ไม่ใช่
+                            <input type="radio" asp-for="skill2" id="check2" value="2"> งานสวน
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-group">
+                        <div class="col-md-8 control-label">
+                            <input type="radio" asp-for="skill3" id="check33" value=""> ไม่ใช่
+                            <input type="radio" asp-for="skill3" id="check3" value="3"> งานใช้แรง
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-group">
+                        <div class="col-md-8 control-label">
+                            <input type="radio" asp-for="skill4" id="check44" value=""> ไม่ใช่
+                            <input type="radio" asp-for="skill4" id="check4" value="4"> งานอื่นๆ
+                        </div>
+                    </div>
+                </li>
+            </ol>
             <div class="form-group">
                 <div class="col-md-8 control-label">
                     <input type="submit" value="สมัครสมาชิก" class="btn btn-success" />

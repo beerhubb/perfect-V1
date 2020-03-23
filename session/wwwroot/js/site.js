@@ -84,4 +84,27 @@ function testLocalStorageData() {
     localStorage.setItem("PROFILE_REAUTH_EMAIL", "oneaccount@gmail.com");
 }
 
-/*detail*/
+
+
+/*hidden*/
+
+/*function show_price() {
+    document.getElementById('check1').type = 'radio';
+    document.getElementById('check2').type = 'radio';
+    document.getElementById('check3').type = 'radio';
+    document.getElementById('check4').type = 'radio';
+    document.getElementById('check11').type = 'radio';
+    document.getElementById('check22').type = 'radio';
+    document.getElementById('check33').type = 'radio';
+    document.getElementById('check44').type = 'radio';
+}
+function hide_price() {
+    document.getElementById('check1').type = 'hidden';
+    document.getElementById('check2').type = 'hidden';
+    document.getElementById('check3').type = 'hidden';
+    document.getElementById('check4').type = 'hidden';
+    document.getElementById('check11').type = 'hidden';
+    document.getElementById('check22').type = 'hidden';
+    document.getElementById('check33').type = 'hidden';
+    document.getElementById('check44').type = 'hidden';
+}*/

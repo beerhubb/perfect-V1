@@ -1,63 +1,48 @@
-﻿@model session.Models.Register
+﻿@model session.Models.Star
 
 @{
     ViewData["Title"] = "finishtostar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br>
-<br>
-<h2>ให้คะแนนความพึงพอใจ</h2>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+    <div class="container">
+        <br><br>
+        <h2>ให้คะแนนและแดสงความคิดเห็น</h2>
 
-<hr />
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-
-            <p>
-                ดีมาก     :
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                @Html.ActionLink("ให้คะแนน", "star5", new { id = Model._id }, new { @class = "btn btn-success" })
-            </p>
-
-            <p>
-                ดี        :
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                @Html.ActionLink("ให้คะแนน", "star4", new { id = Model._id }, new { @class = "btn btn-success" })
-            </p>
-
-            <p>
-                พอใช้     :
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                @Html.ActionLink("ให้คะแนน", "star3", new { id = Model._id }, new { @class = "btn btn-success" })
-            </p>
-
-            <p>
-                แย่       :
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                @Html.ActionLink("ให้คะแนน", "star2", new { id = Model._id }, new { @class = "btn btn-success" })
-            </p>
-
-            <p>
-                ควรปรับปรุง :
-                <span class="glyphicon glyphicon-star"></span>
-                @Html.ActionLink("ให้คะแนน", "star1", new { id = Model._id }, new { @class = "btn btn-success" })
-            </p>
-
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="finishtostar">
+                    <fieldset>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <input type="radio" asp-for="star" id="check1" value="1"> <span class="fa fa-star checked"></span>
+                            <input type="radio" asp-for="star" id="check2" value="2"> <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>
+                            <input type="radio" asp-for="star" id="check3" value="3"> <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>
+                            <input type="radio" asp-for="star" id="check4" value="4"> <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>
+                            <input type="radio" asp-for="star" id="check4" value="4"> <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>
+                            <span asp-validation-for="star" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="comment" class="control-label"></label>
+                            <input asp-for="comment" class="form-control" rows="5" id="comment" ></input>
+                            <span asp-validation-for="comment" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="ให้คะแนน" class="btn btn-default" />
+                        </div>
+                        </fieldset>
+</form>
+            </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

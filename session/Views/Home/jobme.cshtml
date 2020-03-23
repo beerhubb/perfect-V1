@@ -6,8 +6,9 @@
 }
 
 <div class="container">
-    <h2>งานที่ว่าจ้าง</h2>
-
+    <br>
+    <h2><b>งานที่ว่าจ้าง</b></h2>
+    <hr style="border: 2px solid Gray;" />
     <table class="table">
         <thead>
             <tr>
@@ -56,14 +57,17 @@
                         }
                         else if (item.status == "2")
                         {
-                            <div>เรียบร้อย!</div>
+                            <div>งานเสร็จแล้วให้คะแนนเลย!</div>
+                        }
+                        else if (item.status == "3")
+                        {
+                            <div>เสร็จเรียบร้อย!</div>
                         }
                     </td>
                     <td>
                         @if (item.status == "1")
                         {
                             @Html.ActionLink("ยืนยัน", "jobmeOK", new { id = item._id }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("รายงานปัญหา!", "report", new { id = item._id }, new { @class = "btn btn-danger" })
                         }
                         else if (item.status == "2")
                         {

@@ -41,7 +41,7 @@
                         @if (item.jstatus == "1")
                         {
                             @Html.ActionLink("เลือกคนนี้", "get", new { id = item.Jid }, new { @class = "btn btn-success" })
-                            @Html.ActionLink("ไม่เลือก", "del", new { id = item.Jid }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("ไม่เลือก", "del", new { id = item.Sesid }, new { @class = "btn btn-danger" })
                         }
                     </td>
                 </tr>
@@ -73,7 +73,6 @@
                         @if (item.jstatus == "3")
                         {
                             @Html.ActionLink("ยืนยัน", "finish", new { id = item.Jid }, new { @class = "btn btn-success" })
-                            <a href="#" class="btn btn-danger" role="button">รายงาน</a>
                         }
                     </td>
                 </tr>

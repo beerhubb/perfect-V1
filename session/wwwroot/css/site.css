@@ -2,12 +2,14 @@
 for details on configuring this project to bundle and minify static web assets. */
 @import 'https://fonts.googleapis.com/css?family=Kanit|Prompt';
 
+/* FontAwesome for working BootSnippet :> */
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 body {
     font-family: 'Kanit', sans-serif;
     padding-top: 50px;
     padding-bottom: 20px;
-    background-image: url('https://scontent.fnak2-1.fna.fbcdn.net/v/t1.15752-9/87173061_227430891987466_4764344995966615552_n.jpg?_nc_cat=108&_nc_sid=b96e70&_nc_oc=AQlXnhXe64wVeibiyXI2ozRuG89YwguWysbYO-hlkn-ZxS5YxxORxTL6Xg3g3aup1HA&_nc_ht=scontent.fnak2-1.fna&oh=6dca5555a6f55229a7b29bcd1b794c4e&oe=5E99F7A4');
-    background-repeat: no-repeat;
+    background-image: url("https://scontent.fnak2-1.fna.fbcdn.net/v/t1.15752-9/90264154_813554962474790_6729253862001082368_n.jpg?_nc_cat=101&_nc_sid=b96e70&_nc_oc=AQkba5NC1V07JlaxT0VvwBV1tco8c5bHrpSCn8nZqcjxpikRIm1Re79c8pw6uWXoZuk&_nc_ht=scontent.fnak2-1.fna&oh=b47cd38daaff61c82e85681b88dbcb77&oe=5E97E029");
     background-attachment: fixed;
     background-size: 100% 100%;
 }
@@ -43,7 +45,7 @@ body {
     }
 }
 
-h1, h2, h3 {
+h1, h2, h3, .navbar-brand, .navbar-nav > li > a, a {
     font-family: 'Kanit', sans-serif;
 }
 
@@ -204,7 +206,7 @@ h1, h2, h3 {
 
 
 
-        /**ProFileMaid **/
+/**ProFileMaid **/
 
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
 
@@ -287,7 +289,7 @@ span.tags {
 
 
 
-    /**detail**/
+/**detail**/
 .topDest {
     margin: 10px 0;
 }
@@ -409,7 +411,6 @@ img {
 .preview-pic {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
     flex-grow: 1;
 }
 
@@ -480,7 +481,6 @@ img {
 .colors {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
     flex-grow: 1;
 }
 

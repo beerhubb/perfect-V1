@@ -56,7 +56,6 @@ C:\PROGRAM_D\งาน\perfect-V1\session\bin\Debug\netcoreapp2.1\session.Views.
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.csprojAssemblyReference.cache
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.RazorAssemblyInfo.cache
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.RazorAssemblyInfo.cs
-C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.AssemblyInfoInputs.cache
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.AssemblyInfo.cs
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\session.TagHelpers.input.cache
@@ -94,5 +93,14 @@ C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Ho
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.cshtml.g.cs
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\finish.cshtml.g.cs
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\finishtostar.cshtml.g.cs
-C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\Upload.cshtml.g.cs
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\Login1.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\job1.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\job2.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\job3.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\job4.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\maid1.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\maid2.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\maid3.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\register2.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\comment.cshtml.g.cs
