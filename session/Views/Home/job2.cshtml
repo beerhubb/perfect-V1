@@ -1,0 +1,64 @@
+﻿@model IEnumerable<session.Models.Jregister>
+
+@{
+    ViewData["Title"] = "job2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<br>
+<h2><b>งานสวนในเขตพื้นที่ศรีสะเกษ</b></h2>
+<hr style="border: 2px solid Gray;" />
+<div class="container-fluid topDest">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            if (item.jstatus != "2")
+            {
+                if (item.date != null)
+                {
+                    string[] splinnn = item.date.Split('-');
+                    var yy = splinnn[0].ToString();
+                    var mm = splinnn[1].ToString();
+                    var dd = splinnn[2].ToString();
+                    int mmm = int.Parse(mm);
+                    int ddd = int.Parse(dd);
+                    string checkyyy = DateTime.Now.ToString("yyyy");
+                    var checkmm = DateTime.Now.ToString("MM");
+                    var checkdd = DateTime.Now.ToString("dd");
+                    var intmm = int.Parse(checkmm);
+                    var intdd = int.Parse(checkdd);
+                    if (mmm >= intmm && ddd >= intdd)
+                    {
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <a href="#myModal" data-toggle="modal" class="destLinks">
+                                <div class="destiBoxWrap col-sm-12">
+                                    <img src="@Html.DisplayFor(model => item.jpictrue1)" alt="Image" title="Project" class="img-responsive width100">
+                                    <div class="destiBox hangBox">
+                                        <h4> @Html.DisplayFor(model => item.jname)</h4>
+                                        <h5> @Html.DisplayFor(model => item.jdatail) </h5>
+                                        <h5>วันที่ - @Html.DisplayFor(model => item.date)</h5>
+                                        <h4 class="col1">ราคา: @Html.DisplayFor(modell => item.jprice)</h4>
+                                        @if (@ViewBag.use != null && ViewBag.status == "1")
+                                        {
+                                            @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id }, new { @class = "btn btn-info", onclick = "displayDate()" })
+                                            <script>
+                                                function displayDate() {
+                                                    alert("คุณได้กดรับงานนนี้แล้ว!");
+                                                }
+                                            </script>
+                                        }
+                                        else
+                                        {
+                                            <a href="Home/Login" class="btn btn-success" role="button">เข้าสู่ระบบก่อน!</a>
+                                        }
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+            }
+        }
+    </div>
+</div>
