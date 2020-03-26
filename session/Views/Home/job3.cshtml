@@ -5,15 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br>
-<br>
-<h2><b>งานใช้แรงในเขตพื้นที่ศรีสะเกษ</b></h2>
+<div class="text-center">
+    <h1 >งานใช้แรงในพื้นที่ศรีสะเกษ</h1>
+</div>
 <hr style="border: 2px solid Gray;" />
-<div class="container-fluid topDest">
-    <div class="row">
-
+<section class="py-1 bg-info">
+    <div class="container">
         @foreach (var item in Model)
         {
-            if (item.jstatus != "2")
+            if (item.jstatus != "2" && item.jstatus != "3")
             {
                 if (item.date != null)
                 {
@@ -21,44 +21,54 @@
                     var yy = splinnn[0].ToString();
                     var mm = splinnn[1].ToString();
                     var dd = splinnn[2].ToString();
+                    int yyy = int.Parse(yy);
                     int mmm = int.Parse(mm);
                     int ddd = int.Parse(dd);
                     string checkyyy = DateTime.Now.ToString("yyyy");
                     var checkmm = DateTime.Now.ToString("MM");
                     var checkdd = DateTime.Now.ToString("dd");
+                    var intyy = int.Parse(checkyyy);
                     var intmm = int.Parse(checkmm);
                     var intdd = int.Parse(checkdd);
-                    if (mmm >= intmm && ddd >= intdd)
+                    if (mmm >= intmm && ddd >= intdd && (yyy + 543) >= intyy)
                     {
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <a href="#myModal" data-toggle="modal" class="destLinks">
-                                <div class="destiBoxWrap col-sm-12">
-                                    <img src="@Html.DisplayFor(model => item.jpictrue1)" alt="Image" title="Project" class="img-responsive width100">
-                                    <div class="destiBox hangBox">
-                                        <h4> @Html.DisplayFor(model => item.jname)</h4>
-                                        <h5> @Html.DisplayFor(model => item.jdatail) </h5>
-                                        <h5>วันที่ - @Html.DisplayFor(model => item.date)</h5>
-                                        <h4 class="col1">ราคา: @Html.DisplayFor(modell => item.jprice)</h4>
-                                        @if (@ViewBag.use != null && ViewBag.status == "1")
-                                        {
-                                            @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id }, new { @class = "btn btn-info", onclick = "displayDate()" })
-                                            <script>
-                                                function displayDate() {
-                                                    alert("คุณได้กดรับงานนนี้แล้ว!");
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <div class="row text-center ">
+                                            <div class="col-md-2 mr-2">
+                                                <img src="@Html.DisplayFor(model => item.jpictrue1)" alt="Image" title="Project" class="img-responsive width100">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h3><b> @Html.DisplayFor(model => item.jname)</b></h3>
+                                                <h5><b>รายละเอียด</b>: @Html.DisplayFor(model => item.jdatail) </h5>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h5 class="col1">วันที่: @Html.DisplayFor(model => item.date)</h5>
+                                                <h4 class="col1">ราคา: @Html.DisplayFor(modell => item.jprice)</h4>
+                                                @if (ViewBag.use != null && ViewBag.status == "1")
+                                                {
+                                                    @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id }, new { @class = "btn btn-info", onclick = "displayDate()" })
+                                                    <script>
+                                                        function displayDate() {
+                                                            alert("คุณได้กดรับงานนนี้แล้ว!");
+                                                        }
+                                                    </script>
                                                 }
-                                            </script>
-                                        }
-                                        else
-                                        {
-                                            <a href="Home/Login" class="btn btn-success" role="button">เข้าสู่ระบบก่อน!</a>
-                                        }
+                                                else
+                                                {
+                                                    <a asp-area="" asp-controller="Home" asp-action="Login" class="btn btn-info" role="button">เข้าสู่ระบบก่อน!</a>
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     }
                 }
             }
         }
     </div>
-</div>
+</section>

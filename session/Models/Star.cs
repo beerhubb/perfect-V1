@@ -27,7 +27,7 @@ namespace session.Models
         public string star { get; set; }
 
         [Required]
-        [Display(Name ="แสดงความคิดเห็น")]
+        [Display(Name ="ความคิดเห็น")]
         [StringLength(250)]
         public string comment { get; set; }
     }

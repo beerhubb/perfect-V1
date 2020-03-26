@@ -5,52 +5,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>สถานะงานของฉัน</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.jname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.jdatail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.jaddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.jstatus)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="container">
+    <h2>สถานะงานของฉัน</h2>
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.jname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.jdatail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.jaddress)
-                </td>
-                <td>
-                    @if (item.jstatus == "1")
-                    {<div>รอการยืนยัน</div>}
-                    else if (item.jstatus == "2")
-                    {<div>อนุมัติแล้ว</div>}
-                    else if (item.jstatus == "3")
-                    {<div>ทำเสร็จแล้ว</div>}
-                </td>
-                <td>
-                    @if (item.jstatus == "2")
-                    {@Html.ActionLink("Details", "Details", new { id = item._id })}
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.jname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jdatail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jaddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jstatus)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jdatail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jaddress)
+                    </td>
+                    <td>
+                        @if (item.jstatus == "1")
+                        {<div>รอการยืนยัน</div>}
+                        else if (item.jstatus == "2")
+                        {<div>อนุมัติแล้ว</div>}
+                        else if (item.jstatus == "3")
+                        {<div>ทำเสร็จแล้ว</div>}
+                    </td>
+                    <td>
+                        @if (item.jstatus == "2")
+                        {@Html.ActionLink("Details", "Details", new { id = item._id })}
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

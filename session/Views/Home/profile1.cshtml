@@ -25,7 +25,6 @@
                 <div class="container" style="border-bottom: 1px solid black">
                     <h2>ชื่อ @ViewBag.name</h2>
                 </div>
-                <hr>
                 <ul class="container details">
                     <div class="col-md-6 col-sm-6">
                         <li><p><span class="glyphicon glyphicon-user" style="width:50px;"></span>@ViewBag.age ปี</p></li>
@@ -35,39 +34,6 @@
                         }
                         <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>@ViewBag.add</p></li>
                         @Html.ActionLink("แก้ไขโปรไฟล์", "editprofile", new { id = ViewBag.id }, new { @class = "btn btn-warning" })
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <h4><b>ความพึงพอใจ</b></h4>
-                        <hr>
-                        <p>
-                            @ViewBag.s5 คน <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </p>
-
-                        <p>
-                            @ViewBag.s4 คน <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </p>
-
-                        <p>
-                            @ViewBag.s3 คน <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </p>
-
-                        <p>
-                            @ViewBag.s2 คน <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </p>
-
-                        <p>
-                            @ViewBag.s1 คน <span class="glyphicon glyphicon-star"></span>
-                        </p>
                     </div>
                 </ul>
             </div>
