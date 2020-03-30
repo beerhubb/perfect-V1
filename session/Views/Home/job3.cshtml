@@ -30,42 +30,85 @@
                     var intyy = int.Parse(checkyyy);
                     var intmm = int.Parse(checkmm);
                     var intdd = int.Parse(checkdd);
-                    if (mmm >= intmm && ddd >= intdd && (yyy + 543) >= intyy)
+                    if (yyy + 543 >= intyy)
                     {
-                        <div class="row mb-3">
-                            <div class="col-md-12">
-                                <div class="card shadow">
-                                    <div class="card-body">
-                                        <div class="row text-center ">
-                                            <div class="col-md-2 mr-2">
-                                                <img src="@Html.DisplayFor(model => item.jpictrue1)" alt="Image" title="Project" class="img-responsive width100">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h3><b> @Html.DisplayFor(model => item.jname)</b></h3>
-                                                <h5><b>รายละเอียด</b>: @Html.DisplayFor(model => item.jdatail) </h5>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <h5 class="col1">วันที่: @Html.DisplayFor(model => item.date)</h5>
-                                                <h4 class="col1">ราคา: @Html.DisplayFor(modell => item.jprice)</h4>
-                                                @if (ViewBag.use != null && ViewBag.status == "1")
-                                                {
-                                                    @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id }, new { @class = "btn btn-info", onclick = "displayDate()" })
-                                                    <script>
-                                                        function displayDate() {
-                                                            alert("คุณได้กดรับงานนนี้แล้ว!");
+                        if (mmm == intmm)
+                        {
+                            if (ddd >= intdd)
+                            {
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <div class="card shadow">
+                                            <div class="card-body">
+                                                <div class="row text-center ">
+                                                    <div class="col-md-2 mr-2">
+                                                        <img src="@Html.DisplayFor(model => item.jpictrue1)" alt="Image" title="Project" class="img-responsive width100">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <h3><b> @Html.DisplayFor(model => item.jname)</b></h3>
+                                                        <h5><b>รายละเอียด</b>: @Html.DisplayFor(model => item.jdatail) </h5>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h5 class="col1">วันที่: @Html.DisplayFor(model => item.date)</h5>
+                                                        <h4 class="col1">ราคา: @Html.DisplayFor(modell => item.jprice)</h4>
+                                                        @if (ViewBag.use != null && ViewBag.status == "1")
+                                                        {
+                                                            @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id }, new { @class = "btn btn-info", onclick = "displayDate()" })
+                                                            <script>
+                                                                function displayDate() {
+                                                                    alert("คุณได้กดรับงานนนี้แล้ว!");
+                                                                }
+                                                            </script>
                                                         }
-                                                    </script>
-                                                }
-                                                else
-                                                {
-                                                    <a asp-area="" asp-controller="Home" asp-action="Login" class="btn btn-info" role="button">เข้าสู่ระบบก่อน!</a>
-                                                }
+                                                        else
+                                                        {
+                                                            <a asp-area="" asp-controller="Home" asp-action="Login" class="btn btn-info" role="button">เข้าสู่ระบบก่อน!</a>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        if (mmm != intmm)
+                        {
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="card shadow">
+                                        <div class="card-body">
+                                            <div class="row text-center ">
+                                                <div class="col-md-2 mr-2">
+                                                    <img src="@Html.DisplayFor(model => item.jpictrue1)" alt="Image" title="Project" class="img-responsive width100">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h3><b> @Html.DisplayFor(model => item.jname)</b></h3>
+                                                    <h5><b>รายละเอียด</b>: @Html.DisplayFor(model => item.jdatail) </h5>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h5 class="col1">วันที่: @Html.DisplayFor(model => item.date)</h5>
+                                                    <h4 class="col1">ราคา: @Html.DisplayFor(modell => item.jprice)</h4>
+                                                    @if (ViewBag.use != null && ViewBag.status == "1")
+                                                    {
+                                                        @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id }, new { @class = "btn btn-info", onclick = "displayDate()" })
+                                                        <script>
+                                                            function displayDate() {
+                                                                alert("คุณได้กดรับงานนนี้แล้ว!");
+                                                            }
+                                                        </script>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a asp-area="" asp-controller="Home" asp-action="Login" class="btn btn-info" role="button">เข้าสู่ระบบก่อน!</a>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     }
                 }
             }
