@@ -8,7 +8,7 @@
 
 <div class="container">
     <br>
-    <h2 class="text-center"><b>สมัครสมาชิก</b></h2>
+    <h2 class="text-center"><b>สมัครสมาชิกผู้จ้างงาน</b></h2>
     <hr />
     <form asp-action="register2" class="form-horizontal">
         <fieldset>
@@ -74,6 +74,13 @@
                 <div class="col-md-4">
                     <input asp-for="line" placeholder="admin_1234" class="form-control" />
                     <span asp-validation-for="line" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="facebook" class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <input asp-for="facebook" placeholder="https://web.facebook.com/Beer.Chaiyawat.Maduea" class="form-control" />
+                    <span asp-validation-for="facebook" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4 control-label">

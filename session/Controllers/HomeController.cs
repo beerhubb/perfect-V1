@@ -86,7 +86,7 @@ namespace session.Controllers
         {
             ViewBag.use = HttpContext.Session.GetString("use");
             ViewBag.status = HttpContext.Session.GetString("status");
-            var item = Collectionregis.Find(it => it.skill1 == "1").ToList();
+            var item = Collectionregis.Find(it => it.status == "3" && it.skill1 == "1").ToList();
 
             return View(item);
         }
@@ -95,7 +95,7 @@ namespace session.Controllers
         {
             ViewBag.use = HttpContext.Session.GetString("use");
             ViewBag.status = HttpContext.Session.GetString("status");
-            var item = Collectionregis.Find(it => it.skill2 == "2").ToList();
+            var item = Collectionregis.Find(it => it.status == "3" && it.skill2 == "2").ToList();
 
             return View(item);
         }
@@ -104,7 +104,7 @@ namespace session.Controllers
         {
             ViewBag.use = HttpContext.Session.GetString("use");
             ViewBag.status = HttpContext.Session.GetString("status");
-            var item = Collectionregis.Find(it => it.skill3 == "3").ToList();
+            var item = Collectionregis.Find(it => it.status == "3" && it.skill3 == "3").ToList();
 
             return View(item);
         }
@@ -113,7 +113,7 @@ namespace session.Controllers
         {
             ViewBag.use = HttpContext.Session.GetString("use");
             ViewBag.status = HttpContext.Session.GetString("status");
-            var item = Collectionregis.Find(it => it.skill4 == "4").ToList();
+            var item = Collectionregis.Find(it => it.status == "3" && it.skill4 == "4").ToList();
 
             return View(item);
         }
@@ -216,6 +216,7 @@ namespace session.Controllers
                 phon = data.phon,
                 Email = data.Email,
                 line = data.line,
+                facebook = data.facebook,
                 pictrueP = data.pictrueP,
                 status = "1",
                 skill1 = data.skill1,
@@ -250,6 +251,7 @@ namespace session.Controllers
                 phon = data.phon,
                 Email = data.Email,
                 line = data.line,
+                facebook = data.facebook,
                 pictrueP = data.pictrueP,
                 status = "2"
             };
@@ -301,10 +303,13 @@ namespace session.Controllers
         public IActionResult Login(Login data)
         {
             var user = Collectionregis.Find(it => it.username == data.username && it.password == data.password).FirstOrDefault();
-
-            if (user != null)
+            if (data.username == "adminhub" && data.password == "admin1234")
             {
-                if (user.status == "1")
+                return RedirectToAction("adminonly");
+            }
+            else if (user != null)
+            {
+                if (user.status == "3")
                 {
                     HttpContext.Session.SetString("use", data.username);
                     HttpContext.Session.SetString("id", user._id);
@@ -314,25 +319,24 @@ namespace session.Controllers
                     HttpContext.Session.SetString("addr", user.address);
                     HttpContext.Session.SetString("pcc", user.pictrue);
                     HttpContext.Session.SetString("status", user.status);
-                    HttpContext.Session.SetInt32("star1", user.star1);
-                    HttpContext.Session.SetInt32("star2", user.star2);
-                    HttpContext.Session.SetInt32("star3", user.star3);
-                    HttpContext.Session.SetInt32("star4", user.star4);
-                    HttpContext.Session.SetInt32("star5", user.star5);
 
+                    return RedirectToAction("Index");
+                }
+                else if (user.status == "4")
+                {
+                    HttpContext.Session.SetString("use", data.username);
+                    HttpContext.Session.SetString("id", user._id);
+                    HttpContext.Session.SetString("Uname", user.name);
+                    HttpContext.Session.SetString("Pic", user.pictrueP);
+                    HttpContext.Session.SetString("age", user.age);
+                    HttpContext.Session.SetString("addr", user.address);
+                    HttpContext.Session.SetString("pcc", user.pictrue);
+                    HttpContext.Session.SetString("status", user.status);
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    HttpContext.Session.SetString("use", data.username);
-                    HttpContext.Session.SetString("id", user._id);
-                    HttpContext.Session.SetString("Uname", user.name);
-                    HttpContext.Session.SetString("Pic", user.pictrueP);
-                    HttpContext.Session.SetString("age", user.age);
-                    HttpContext.Session.SetString("addr", user.address);
-                    HttpContext.Session.SetString("pcc", user.pictrue);
-                    HttpContext.Session.SetString("status", user.status);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Login1");
                 }
             }
             else
@@ -353,9 +357,13 @@ namespace session.Controllers
         {
             var user = Collectionregis.Find(it => it.username == data.username && it.password == data.password).FirstOrDefault();
 
-            if (user != null)
+            if (data.username == "adminhub" && data.password == "admin1234")
             {
-                if (user.status == "1")
+                return RedirectToAction("adminonly");
+            }
+            else if (user != null)
+            {
+                if (user.status == "3")
                 {
                     HttpContext.Session.SetString("use", data.username);
                     HttpContext.Session.SetString("id", user._id);
@@ -363,33 +371,81 @@ namespace session.Controllers
                     HttpContext.Session.SetString("Pic", user.pictrueP);
                     HttpContext.Session.SetString("age", user.age);
                     HttpContext.Session.SetString("addr", user.address);
+                    HttpContext.Session.SetString("phon", user.phon);
+                    HttpContext.Session.SetString("email", user.Email);
+                    HttpContext.Session.SetString("idline", user.line);
+                    HttpContext.Session.SetString("facebook", user.facebook);
                     HttpContext.Session.SetString("pcc", user.pictrue);
                     HttpContext.Session.SetString("status", user.status);
-                    HttpContext.Session.SetInt32("star1", user.star1);
-                    HttpContext.Session.SetInt32("star2", user.star2);
-                    HttpContext.Session.SetInt32("star3", user.star3);
-                    HttpContext.Session.SetInt32("star4", user.star4);
-                    HttpContext.Session.SetInt32("star5", user.star5);
-
+                    return RedirectToAction("Index");
+                }
+                else if (user.status == "4")
+                {
+                    HttpContext.Session.SetString("use", data.username);
+                    HttpContext.Session.SetString("id", user._id);
+                    HttpContext.Session.SetString("Uname", user.name);
+                    HttpContext.Session.SetString("Pic", user.pictrueP);
+                    HttpContext.Session.SetString("age", user.age);
+                    HttpContext.Session.SetString("addr", user.address);
+                    HttpContext.Session.SetString("phon", user.phon);
+                    HttpContext.Session.SetString("email", user.Email);
+                    HttpContext.Session.SetString("idline", user.line);
+                    HttpContext.Session.SetString("facebook", user.facebook);
+                    HttpContext.Session.SetString("pcc", user.pictrue);
+                    HttpContext.Session.SetString("status", user.status);
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    HttpContext.Session.SetString("use", data.username);
-                    HttpContext.Session.SetString("id", user._id);
-                    HttpContext.Session.SetString("Uname", user.name);
-                    HttpContext.Session.SetString("Pic", user.pictrueP);
-                    HttpContext.Session.SetString("age", user.age);
-                    HttpContext.Session.SetString("addr", user.address);
-                    HttpContext.Session.SetString("pcc", user.pictrue);
-                    HttpContext.Session.SetString("status", user.status);
-                    return RedirectToAction("Index");
+                    return View();
                 }
             }
             else
             {
                 return View();
             }
+        }
+
+        public IActionResult adminonly()
+        {
+            var result = Collectionregis.Find(it => true).ToList();
+
+            return View(result);
+        }
+
+        public IActionResult adminedit(string id)
+        {
+            var select = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+
+            return View(select);
+        }
+
+        [HttpGet]
+        public IActionResult adtosys(string id)
+        {
+            //*add_user*//
+            var adstt1 = Builders<Register>.Update.Set(it => it.status, "3");
+            var adstt2 = Builders<Register>.Update.Set(it => it.status, "4");
+            var item = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+            if (item.status == "1")
+            {
+                Collectionregis.UpdateOne(it => it._id == id, adstt1);
+                return RedirectToAction("adminonly");
+            }
+            else if (item.status == "2")
+            {
+                Collectionregis.UpdateOne(it => it._id == id, adstt2);
+                return RedirectToAction("adminonly");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult droptosys(string id)
+        {
+            //*drop_user*//
+            Collectionregis.DeleteOne(it => it._id == id);
+            return RedirectToAction("adminonly");
         }
 
         public IActionResult profile1()
@@ -401,11 +457,6 @@ namespace session.Controllers
             ViewBag.age = HttpContext.Session.GetString("age");
             ViewBag.add = HttpContext.Session.GetString("addr");
             ViewBag.status = HttpContext.Session.GetString("status");
-            ViewBag.s1 = HttpContext.Session.GetInt32("star1");
-            ViewBag.s2 = HttpContext.Session.GetInt32("star2");
-            ViewBag.s3 = HttpContext.Session.GetInt32("star3");
-            ViewBag.s4 = HttpContext.Session.GetInt32("star4");
-            ViewBag.s5 = HttpContext.Session.GetInt32("star5");
 
             var result = Collationconf.Find(it => it.Sesid == HttpContext.Session.GetString("id")).ToList();
             return View(result);
@@ -541,6 +592,8 @@ namespace session.Controllers
                     _id = Guid.NewGuid().ToString(),
                     Sesid = HttpContext.Session.GetString("id"),
                     Maidid = select.Sesid,
+                    namejob = select.jname,
+                    detailjob = select.jdatail,
                     namesesid = select.Nsesid,
                     star = data.star,
                     comment = data.comment
@@ -551,16 +604,19 @@ namespace session.Controllers
             }
             catch
             {
-                var select = Collectionregis.Find(it => it._id == id).FirstOrDefault();
+                var selectname = CollectionJregis.Find(it => it._id == id).FirstOrDefault();
+                var select = Collectionregis.Find(it => it._id == selectname.Sesid).FirstOrDefault();
                 var upstatus = Builders<HIRE>.Update.Set(it => it.status, "3");
                 var item = new Star
                 {
                     _id = Guid.NewGuid().ToString(),
                     Sesid = HttpContext.Session.GetString("id"),
                     Maidid = id,
+                    namejob = selectname.jname,
+                    detailjob = selectname.jdatail,
                     namesesid = select.name,
                     star = data.star,
-                    comment = data.comment
+                    comment = data.comment  
                 };
                 CollationStar.InsertOne(item);
                 Collationhire.UpdateOne(it => it.Ses2id == id, upstatus);

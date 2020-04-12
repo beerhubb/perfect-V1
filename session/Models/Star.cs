@@ -19,7 +19,15 @@ namespace session.Models
         public string Maidid { get; set; }
 
         [Required]
-        [Display(Name ="ผู้ให้คะแนน")]
+        [Display(Name = "ชื่องาน")]
+        public string namejob { get; set; }
+
+        [Required]
+        [Display(Name = "รายละเอียดงาน")]
+        public string detailjob { get; set; }
+
+        [Required]
+        [Display(Name = "ผู้ให้คะแนน")]
         public string namesesid { get; set; }
 
         [Required]
@@ -27,7 +35,7 @@ namespace session.Models
         public string star { get; set; }
 
         [Required]
-        [Display(Name ="ความคิดเห็น")]
+        [Display(Name = "ความคิดเห็น")]
         [StringLength(250)]
         public string comment { get; set; }
     }

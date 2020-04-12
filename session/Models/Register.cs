@@ -19,23 +19,24 @@ namespace session.Models
         [Required]
         [Display(Name = "PassWord")]
         [DataType(DataType.Password)]
+        [StringLength(50, MinimumLength = 4)]
         public string password { get; set; }
 
         [Required]
-        [Display(Name ="ชื่อ-นามสกุล")]
+        [Display(Name = "ชื่อ-นามสกุล")]
         public string name { get; set; }
 
         [Required]
-        [Display(Name ="อายุ")]
+        [Display(Name = "อายุ")]
         public string age { get; set; }
 
         [Required]
-        [Display(Name ="ที่อยู่ที่ติดต่อได้")]
+        [Display(Name = "ที่อยู่ที่ติดต่อได้")]
         public string address { get; set; }
 
         [Required]
-        [Display(Name ="รหัสบัตรประชาชน")]
-        [StringLength(14,MinimumLength = 13)]
+        [Display(Name = "รหัสบัตรประชาชน")]
+        [StringLength(14, MinimumLength = 13)]
         public string pictrue { get; set; }
 
         [Required]
@@ -47,15 +48,19 @@ namespace session.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "ID-Line")]
+        [Display(Name = "ไอดีไลน์")]
         public string line { get; set; }
 
         [Required]
-        [Display(Name ="รูปโปรไฟล์")]
+        [Display(Name = "ลิงค์เฟสบุ๊ค")]
+        public string facebook { get; set; }
+
+        [Required]
+        [Display(Name = "ลิงค์รูปโปรไฟล์")]
         public string pictrueP { get; set; }
 
         [Required]
-        [Display(Name ="สถานะ")]
+        [Display(Name = "สถานะ")]
         public string status { get; set; }
 
         [Required]
@@ -75,25 +80,5 @@ namespace session.Models
         public string skill4 { get; set; }
 
         //**//
-
-        [Required]
-        [Display(Name = "1 ดาว")]
-        public int star1 { get; set; }
-
-        [Required]
-        [Display(Name = "2 ดาว")]
-        public int star2 { get; set; }
-
-        [Required]
-        [Display(Name = "3 ดาว")]
-        public int star3 { get; set; }
-
-        [Required]
-        [Display(Name = "4 ดาว")]
-        public int star4 { get; set; }
-
-        [Required]
-        [Display(Name = "5 ดาว")]
-        public int star5 { get; set; }
     }
 }

@@ -26,15 +26,17 @@
                     <h2>ชื่อ @ViewBag.name</h2>
                 </div>
                 <ul class="container details">
-                    <div class="col-md-6 col-sm-6">
-                        <li><p><span class="glyphicon glyphicon-user" style="width:50px;"></span>@ViewBag.age ปี</p></li>
-                        @if (ViewBag.status == "1")
-                        {
-                            <li><p><span class="glyphicon glyphicon-ok-sign" style="width:50px;"></span>ผู้รับงาน</p></li>
-                        }
-                        <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>@ViewBag.add</p></li>
-                        @Html.ActionLink("แก้ไขโปรไฟล์", "editprofile", new { id = ViewBag.id }, new { @class = "btn btn-warning" })
-                    </div>
+                    <li><p><span class="glyphicon glyphicon-user" style="width:50px;"></span><b>อายุ: </b>@ViewBag.age ปี</p></li>
+                    @if (ViewBag.status == "1")
+                    {
+                        <li><p><span class="glyphicon glyphicon-ok-sign" style="width:50px;"></span><b>สถานะ: </b>ผู้รับงาน</p></li>
+                    }
+                    <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span><b>ที่อยู่: </b>@ViewBag.add</p></li>
+                    <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span><b>เบอร์โทร: </b>@ViewBag.phon</p></li>
+                    <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span><b>อีเมล: </b>@ViewBag.email</p></li>
+                    <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span><b>ไอดีไลน์: </b>@ViewBag.idline</p></li>
+                    <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span><b>เฟสบุ๊ค: </b>@ViewBag.facebook</p></li>
+                    @Html.ActionLink("แก้ไขโปรไฟล์", "editprofile", new { id = ViewBag.id }, new { @class = "btn btn-warning" })
                 </ul>
             </div>
         </div>

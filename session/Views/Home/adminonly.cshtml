@@ -1,0 +1,62 @@
+﻿@model IEnumerable<session.Models.Register>
+
+@{
+    ViewData["Title"] = "adminonly";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>เฉพาะแอดมิน</h2>
+<hr style="border: 2px solid Gray;" />
+<section class="py-1 bg-light">
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.username)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.age)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.address)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.status == "1" || item.status == "2")
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.age)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.address)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("รายละเอียด", "adminedit", new { id = item._id }, new { @class = "btn btn-warning" })
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<style>
+</style>
