@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br>
-<h2>เฉพาะแอดมิน</h2>
+<h2>>>เฉพาะแอดมิน<<</h2>
 <hr style="border: 2px solid Gray;" />
 <div class="container">
     <div class="card">
@@ -22,9 +22,10 @@
                     <p class="product-description"><b>@Html.DisplayNameFor(Model => Model.age):</b> @Html.DisplayFor(Model => Model.age)</p>
                     <p class="product-description"><b>@Html.DisplayNameFor(Model => Model.address):</b> @Html.DisplayFor(Model => Model.address)</p>
                     <p class="product-description"><b>@Html.DisplayNameFor(Model => Model.pictrue):</b> @Html.DisplayFor(Model => Model.pictrue)</p>
-                    <p class="product-description"><b>@Html.DisplayNameFor(Model => Model.phon):</b> @Html.DisplayNameFor(Model => Model.phon)</p>
+                    <p class="product-description"><b>@Html.DisplayNameFor(Model => Model.phon):</b> @Html.DisplayFor(Model => Model.phon)</p>
                     <p class="product-description"><b>@Html.DisplayNameFor(Model => Model.Email):</b> @Html.DisplayFor(Model => Model.Email)</p>
-                    <p class="product-description"><b>@Html.DisplayNameFor(Model => Model.line):</b> @Html.DisplayFor(Model => Model.line)</p>
+                    <p class="product-description"><b>LINE:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => Model.line)" class="" role="button">ตรวจสอบ LINE</a></p>
+                    <p class="product-description"><b>FACEBOOK:</b> <a href="@Html.DisplayFor(Model => Model.facebook)" class="" role="button">ตรวจสอบ Facebook</a></p>
                     <h4>
                         @Html.ActionLink("เพิ่มเข้าสู่ระบบ", "adtosys", new { id = Model._id }, new { @class = "btn btn-success" })
                         @Html.ActionLink("ลบออกจากระบบ", "droptosys", new { id = Model._id }, new { @class = "btn btn-danger" })

@@ -47,7 +47,8 @@
                                         <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
                                         <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
                                         <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
-                                        <p class="card-text"><b>ID-Line</b> :@Html.DisplayFor(model => item.line)</p>
+                                        <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                        <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
                                         <ul class="list-inline">
                                             @if (ViewBag.use != null && ViewBag.status == "2")
                                             {
@@ -185,20 +186,20 @@
             min-height: 312px;
         }
 
-            .backside .card a {
-                font-size: 18px;
-                color: #fff !important;
-            }
+    .backside {
+        font-size: 18px;
+        color: #ff0000;
+    }
 
-            .frontside .card .card-title,
-            .backside .card .card-title {
-                color: #007b5e !important;
-            }
+        .frontside .card .card-title,
+        .backside .card .card-title {
+            color: #007b5e !important;
+        }
 
-            .frontside .card .card-body img {
-                width: 120px;
-                height: 120px;
-                border-radius: 50%;
-            }
+    .frontside .card .card-body img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
 </style>
 
