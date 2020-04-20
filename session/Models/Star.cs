@@ -27,6 +27,10 @@ namespace session.Models
         public string detailjob { get; set; }
 
         [Required]
+        [Display(Name = "วันที่-เวลา")]
+        public string datetime { get; set; }
+
+        [Required]
         [Display(Name = "ผู้ให้คะแนน")]
         public string namesesid { get; set; }
 

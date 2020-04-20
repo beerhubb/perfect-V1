@@ -6,79 +6,671 @@
 }
 
 <br>
-<br>
-<h2><b>ผู้ต้องการงาน</b></h2>
+<h2><b>ผู้ต้องการงาน (งานใช้แรง)</b></h2>
 <hr style="border: 2px solid Gray;" />
 
-<section id="team" class="pb-5">
-    <div class="container-fluid">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <!-- Team member -->
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                        <div class="mainflip">
-                            <div class="frontside">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
-                                        <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
-                                        <p class="card-text">
-                                            <h4><b>งานที่ถนัด</b></h4> <div class="row">
-                                                @if (item.skill1 == "1")
-                                                {<h5>งานบ้าน</h5>}
-                                                @if (item.skill2 == "2")
-                                                {<h5>งานสวน</h5>}
-                                                @if (item.skill3 == "3")
-                                                {<h5>งานใช้แรง</h5>}
-                                                @if (item.skill4 == "4")
-                                                {<h5>งานอื่นๆ</h5>}
-                                            </div>
-                                        </p>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home">ทั้งหมด</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1">100-200/วัน</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu2">200-300/วัน</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu3">300-400/วัน</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu4">400-500/วัน</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu5">500-600/วัน</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu6">600-700/วัน</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu7">700-800/วัน</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu8">800-900/วัน</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu9">900-1000+/วัน</a>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane active container" id="home">
+        <!--even1-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <!-- Team member -->
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                            <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="backside col-xs-12 col-sm-6 col-md-12">
-                                <div class="card">
-                                    <div class="card-body text-center mt-4">
-                                        <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
-                                        <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
-                                        <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
-                                        <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
-                                        <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
-                                        <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
-                                        <ul class="list-inline">
-                                            @if (ViewBag.use != null && ViewBag.status == "2")
-                                            {
-                                                <li class="list-inline-item">
-                                                    @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li class="list-inline-item">
-                                                    @Html.ActionLink("เข้าสู่ระบบก่อน!", "Login", new { id = item._id }, new { @class = "btn btn-info" })
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
-                                                </li>
-                                            }
-                                        </ul>
+                                <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                            <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                            <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                            <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                            <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                            <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                            <ul class="list-inline col-md-12">
+                                                @if (ViewBag.use != null && ViewBag.status == "2")
+                                                {
+                                                    <li class="list-inline-item">
+                                                        @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="list-inline-item">
+                                                        @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
     </div>
-</section>
-<!-- ./Team member -->
+    <div class="tab-pane container" id="menu1">
+        <!--even2-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.rateskill3 == "1")
+                    {
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                                <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                                <p class="card-text"><b>เรทราคา</b></p>
+                                                <p class="card-text">100-200</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                                <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                                <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                                <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                                <ul class="list-inline col-md-12">
+                                                    @if (ViewBag.use != null && ViewBag.status == "2")
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
+    </div>
+    <div class="tab-pane container" id="menu2">
+        <!--even3-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.rateskill3 == "2")
+                    {
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                                <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                                <p class="card-text"><b>เรทราคา</b></p>
+                                                <p class="card-text">200-300</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                                <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                                <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                                <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                                <ul class="list-inline col-md-12">
+                                                    @if (ViewBag.use != null && ViewBag.status == "2")
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
+    </div>
+    <div class="tab-pane container" id="menu3">
+        <!--even4-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.rateskill3 == "3")
+                    {
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                                <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                                <p class="card-text"><b>รับงาน/ต่อวัน</b></p>
+                                                <p class="card-text">300-400</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                                <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                                <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                                <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                                <ul class="list-inline col-md-12">
+                                                    @if (ViewBag.use != null && ViewBag.status == "2")
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
+    </div>
+    <div class="tab-pane container" id="menu4">
+        <!--even5-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.rateskill3 == "4")
+                    {
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                                <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                                <p class="card-text"><b>รับงาน/ต่อวัน</b></p>
+                                                <p class="card-text">400-500</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                                <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                                <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                                <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                                <ul class="list-inline col-md-12">
+                                                    @if (ViewBag.use != null && ViewBag.status == "2")
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
+    </div>
+    <div class="tab-pane container" id="menu5">
+        <!--even6-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.rateskill3 == "5")
+                    {
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                                <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                                <p class="card-text"><b>รับงาน/ต่อวัน</b></p>
+                                                <p class="card-text">500-600</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                                <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                                <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                                <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                                <ul class="list-inline col-md-12">
+                                                    @if (ViewBag.use != null && ViewBag.status == "2")
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
+    </div>
+    <div class="tab-pane container" id="menu6">
+        <!--even7-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.rateskill3 == "6")
+                    {
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                                <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                                <p class="card-text"><b>รับงาน/ต่อวัน</b></p>
+                                                <p class="card-text">600-700</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                                <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                                <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                                <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                                <ul class="list-inline col-md-12">
+                                                    @if (ViewBag.use != null && ViewBag.status == "2")
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
+    </div>
+    <div class="tab-pane container" id="menu7">
+        <!--even8-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.rateskill3 == "7")
+                    {
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                                <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                                <p class="card-text"><b>รับงาน/ต่อวัน</b></p>
+                                                <p class="card-text">700-800</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                                <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                                <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                                <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                                <ul class="list-inline col-md-12">
+                                                    @if (ViewBag.use != null && ViewBag.status == "2")
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
+    </div>
+    <div class="tab-pane container" id="menu8">
+        <!--even9-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.rateskill3 == "8")
+                    {
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                                <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                                <p class="card-text"><b>รับงาน/ต่อวัน</b></p>
+                                                <p class="card-text">800-900</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                                <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                                <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                                <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                                <ul class="list-inline col-md-12">
+                                                    @if (ViewBag.use != null && ViewBag.status == "2")
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
+    </div>
+    <div class="tab-pane container" id="menu9">
+        <!--even10-->
+        <section id="team" class="pb-5">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.rateskill3 == "9")
+                    {
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="@Html.DisplayFor(model => item.pictrueP)" alt="card image"></p>
+                                                <h4 class="card-title"><b> @Html.DisplayFor(model => item.name)</b></h4>
+                                                <p class="card-text"><b>รับงาน/ต่อวัน</b></p>
+                                                <p class="card-text">900-1000</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside col-xs-12 col-sm-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">@Html.DisplayFor(model => item.name)</h4>
+                                                <p class="card-text"><b>รายละเอียด</b> :@Html.DisplayFor(model => item.address)</p>
+                                                <p class="card-text"><b>เบอร์โทรศัพท์</b> :@Html.DisplayFor(model => item.phon)</p>
+                                                <p class="card-text"><b>E-Mail</b> :@Html.DisplayFor(model => item.Email)</p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => item.line)">เพิ่มเพื่อน-LINE</a></p>
+                                                <p class="card-text"><b>ช่องทางติดต่อ:</b> <a href="@Html.DisplayFor(Model => item.facebook)" class="" role="button">เพิ่มเพื่อน-Facebook</a></p>
+                                                <ul class="list-inline col-md-12">
+                                                    @if (ViewBag.use != null && ViewBag.status == "2")
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("จ้างงาน", "hire", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("เข้าสู่ระบบ", "Login", new { id = item._id }, new { @class = "btn btn-info" })
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            @Html.ActionLink("ดูคะแนน", "comment", new { id = item._id }, new { @class = "btn btn-warning" })
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- ./Team member -->
+    </div>
+</div>
 
 <style>
 

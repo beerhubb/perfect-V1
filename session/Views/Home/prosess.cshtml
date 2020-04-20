@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "prosess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>ขั้นตอนการทำงานของระบบ</h2>
+    <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header">
+                <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                    ขั้นตอนการทำงาน(จ้างงานด้วยโพส)
+                </a>
+            </div>
+            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                <div class="card-body">
+                    1.เลือกผู้รับงานที่ลงชื่อรับงาน
+                </div>
+                <div class="card-body">
+                    2.ติดต่อผู้รับงานเพื่อคุยรายละเอียดและนัดเวลา
+                </div>
+                <div class="card-body">
+                    3.เมื่องานเสร็จตรวจสอบงานที่ผู้รับงานทำ
+                </div>
+                <div class="card-body">
+                    4.จ่ายเงิน
+                </div>
+                <div class="card-body">
+                    5.กดยืนยันการทำงานในระบบ
+                </div>
+                <div class="card-body">
+                    6.ให้คะแนนผู้รับงาน
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                    ขั้นตอนการทำงาน(จ้างผู้รับงานโดยตรง)
+                </a>
+            </div>
+            <div id="collapseThree" class="collapse" data-parent="#accordion">
+                <div class="card-body">
+                    1.ติดต่อผู้รับงานเพื่อคุยรายละเอียดเเละนัดเวลา
+                </div>
+                <div class="card-body">
+                    2.เมื่องานเสร็จตรวจสอบงานที่ผู้รับงานทำ
+                </div>
+                <div class="card-body">
+                    3.จ่ายเงิน
+                </div>
+                <div class="card-body">
+                    4.กดยืนยันการทำงานในระบบ
+                </div>
+                <div class="card-body">
+                    5.ให้คะแนนผู้รับงาน
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

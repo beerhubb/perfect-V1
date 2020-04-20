@@ -26,6 +26,10 @@
                     <p class="product-description"><b>@Html.DisplayNameFor(Model => Model.Email):</b> @Html.DisplayFor(Model => Model.Email)</p>
                     <p class="product-description"><b>LINE:</b> <a href="http://line.me/ti/p/~@Html.DisplayFor(Model => Model.line)" class="" role="button">ตรวจสอบ LINE</a></p>
                     <p class="product-description"><b>FACEBOOK:</b> <a href="@Html.DisplayFor(Model => Model.facebook)" class="" role="button">ตรวจสอบ Facebook</a></p>
+                    <p>@Html.DisplayNameFor(Model => Model.rateskill1) @Html.DisplayFor(Model => Model.rateskill1)</p>
+                    <p>@Html.DisplayNameFor(Model => Model.rateskill2) @Html.DisplayFor(Model => Model.rateskill2)</p>
+                    <p>@Html.DisplayNameFor(Model => Model.rateskill3) @Html.DisplayFor(Model => Model.rateskill3)</p>
+                    <p>@Html.DisplayNameFor(Model => Model.rateskill4) @Html.DisplayFor(Model => Model.rateskill4)</p>
                     <h4>
                         @Html.ActionLink("เพิ่มเข้าสู่ระบบ", "adtosys", new { id = Model._id }, new { @class = "btn btn-success" })
                         @Html.ActionLink("ลบออกจากระบบ", "droptosys", new { id = Model._id }, new { @class = "btn btn-danger" })

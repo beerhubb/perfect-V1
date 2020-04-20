@@ -28,6 +28,9 @@
                     @Html.DisplayNameFor(model => model.detailjob)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.datetime)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.namesesid)
                 </th>
                 <th>
@@ -42,42 +45,45 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.namejob)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.detailjob)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.namesesid)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.comment)
-                    </td>
-                    <td>
-                        @if (item.star == "1")
-                        {
-                            <span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
-                        }
-                        else if (item.star == "2")
-                        {
-                            <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
-                        }
-                        else if (item.star == "3")
-                        {
-                            <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
-                        }
-                        else if (item.star == "4")
-                        {
-                            <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span>
-                        }
-                        else if (item.star == "5")
-                        {
-                            <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>
-                        }
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.namejob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.detailjob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datetime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.namesesid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.comment)
+                </td>
+                <td>
+                    @if (item.star == "1")
+                    {
+                        <span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                    }
+                    else if (item.star == "2")
+                    {
+                        <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                    }
+                    else if (item.star == "3")
+                    {
+                        <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                    }
+                    else if (item.star == "4")
+                    {
+                        <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span>
+                    }
+                    else if (item.star == "5")
+                    {
+                        <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>
+                    }
+                </td>
+            </tr>
             }
         </tbody>
     </table>

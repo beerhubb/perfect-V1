@@ -75,6 +75,12 @@ namespace session.Controllers
             return View(item);
         }
 
+        public IActionResult prosess()
+        {
+
+            return View();
+        }
+
         public IActionResult About()
         {
             ViewBag.use = HttpContext.Session.GetString("use");
@@ -222,7 +228,11 @@ namespace session.Controllers
                 skill1 = data.skill1,
                 skill2 = data.skill2,
                 skill3 = data.skill3,
-                skill4 = data.skill4
+                skill4 = data.skill4,
+                rateskill1 = data.rateskill1,
+                rateskill2 = data.rateskill2,
+                rateskill3 = data.rateskill3,
+                rateskill4 = data.rateskill4
             };
             Collectionregis.InsertOne(item);
 
@@ -594,6 +604,7 @@ namespace session.Controllers
                     Maidid = select.Sesid,
                     namejob = select.jname,
                     detailjob = select.jdatail,
+                    datetime = DateTime.Now.ToString("MM/dd/yyyy"),
                     namesesid = select.Nsesid,
                     star = data.star,
                     comment = data.comment
@@ -616,7 +627,7 @@ namespace session.Controllers
                     detailjob = selectname.jdatail,
                     namesesid = select.name,
                     star = data.star,
-                    comment = data.comment  
+                    comment = data.comment
                 };
                 CollationStar.InsertOne(item);
                 Collationhire.UpdateOne(it => it.Ses2id == id, upstatus);
@@ -625,7 +636,6 @@ namespace session.Controllers
         }
 
         //**//
-
         public IActionResult jobme()
         {
             ViewBag.use = HttpContext.Session.GetString("use");
@@ -672,5 +682,6 @@ namespace session.Controllers
             HttpContext.Session.Remove("use");
             return RedirectToAction("Index");
         }
+
     }
 }

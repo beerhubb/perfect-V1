@@ -106,3 +106,4 @@ C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\UserSecretsAss
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\comment.cshtml.g.cs
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\adminonly.cshtml.g.cs
 C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\adminedit.cshtml.g.cs
+C:\PROGRAM_D\งาน\perfect-V1\session\obj\Debug\netcoreapp2.1\Razor\Views\Home\prosess.cshtml.g.cs

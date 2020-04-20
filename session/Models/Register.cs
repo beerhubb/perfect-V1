@@ -16,7 +16,7 @@ namespace session.Models
         [Display(Name = "UserName")]
         public string username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "กรอกรหัสผ่าน")]
         [Display(Name = "PassWord")]
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 4)]
@@ -79,6 +79,22 @@ namespace session.Models
         [Display(Name = "อื่นๆ")]
         public string skill4 { get; set; }
 
-        //**//
+        //*เลทราคา*//
+
+        [Required]
+        [Display(Name = "เรทราคา")]
+        public string rateskill1 { get; set; }
+
+        [Required]
+        [Display(Name = "เรทราคา")]
+        public string rateskill2 { get; set; }
+
+        [Required]
+        [Display(Name = "เรทราคา")]
+        public string rateskill3 { get; set; }
+
+        [Required]
+        [Display(Name = "เรทราคา")]
+        public string rateskill4 { get; set; }
     }
 }

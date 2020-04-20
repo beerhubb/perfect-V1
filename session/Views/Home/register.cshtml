@@ -55,8 +55,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label asp-for="phon" class="col-md-4 control-label"></label>
-                <div class="col-md-4">
+                <label asp-for="phon" class="col-md-4 col-sm-12 control-label"></label>
+                <div class="col-md-4 col-sm-12">
                     <input asp-for="phon" placeholder="0819442133" class="form-control" />
                     <span asp-validation-for="phon" class="text-danger"></span>
                 </div>
@@ -92,41 +92,85 @@
                     <span asp-validation-for="pictrueP" class="text-danger"></span>
                 </div>
             </div>
-            <label class="col-md-4 control-label">ความถนัด</label>
-            <ol>
-                <li>
-                    <div class="form-group">
-                        <div class="col-md-8 control-label">
-                            <input type="radio" asp-for="skill1" id="check11" value=""> ไม่ใช่
-                            <input type="radio" asp-for="skill1" id="check1" value="1"> งานบ้าน
+            <div class="col-md-8 control-label">
+                <label class=" control-label">เลือกความถนัด</label>
+            </div>
+            <div class="form-group">
+                <div class="col-md-8 control-label">
+                    <input type="radio" asp-for="skill1" id="check11" value="" onclick="myFunction1()"> ไม่ใช่
+                    <input type="radio" asp-for="skill1" id="check1" value="1" onclick="myFunction1()"> งานบ้าน
+                </div>
+                <div class="col-md-8" id="text1" style="display:none">
+                    <div class="row justify-content-end">
+                        <input type="radio" asp-for="rateskill1" value="1"> 100-200
+                        <input type="radio" asp-for="rateskill1" value="2"> 200-300
+                        <input type="radio" asp-for="rateskill1" value="3"> 300-400
+                        <input type="radio" asp-for="rateskill1" value="4"> 400-500
+                        <input type="radio" asp-for="rateskill1" value="5"> 500-600
+                        <input type="radio" asp-for="rateskill1" value="6"> 600-700
+                        <input type="radio" asp-for="rateskill1" value="7"> 700-800
+                        <input type="radio" asp-for="rateskill1" value="8"> 800-900
+                        <input type="radio" asp-for="rateskill1" value="9"> 900-1000+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-8 control-label">
+                    <input type="radio" asp-for="skill2" id="check22" value="" onclick="myFunction2()"> ไม่ใช่
+                    <input type="radio" asp-for="skill2" id="check2" value="2" onclick="myFunction2()"> งานสวน
+                    <div asp-for="rateskill2" id="text2" style="display:none">
+                        <div class="row justify-content-end">
+                            <input type="radio" asp-for="rateskill2" value="1"> 100-200
+                            <input type="radio" asp-for="rateskill2" value="2"> 200-300
+                            <input type="radio" asp-for="rateskill2" value="3"> 300-400
+                            <input type="radio" asp-for="rateskill2" value="4"> 400-500
+                            <input type="radio" asp-for="rateskill2" value="5"> 500-600
+                            <input type="radio" asp-for="rateskill2" value="6"> 600-700
+                            <input type="radio" asp-for="rateskill2" value="7"> 700-800
+                            <input type="radio" asp-for="rateskill2" value="8"> 800-900
+                            <input type="radio" asp-for="rateskill2" value="9"> 900-1000+
                         </div>
                     </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <div class="col-md-8 control-label">
-                            <input type="radio" asp-for="skill2" id="check22" value=""> ไม่ใช่
-                            <input type="radio" asp-for="skill2" id="check2" value="2"> งานสวน
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-8 control-label">
+                    <input type="radio" asp-for="skill3" id="check33" value="" onclick="myFunction3()"> ไม่ใช่
+                    <input type="radio" asp-for="skill3" id="check3" value="3" onclick="myFunction3()"> งานใช้แรง
+                    <div asp-for="rateskill3" id="text3" style="display:none">
+                        <div class="row justify-content-end">
+                            <input type="radio" asp-for="rateskill3" value="1"> 100-200
+                            <input type="radio" asp-for="rateskill3" value="2"> 200-300
+                            <input type="radio" asp-for="rateskill3" value="3"> 300-400
+                            <input type="radio" asp-for="rateskill3" value="4"> 400-500
+                            <input type="radio" asp-for="rateskill3" value="5"> 500-600
+                            <input type="radio" asp-for="rateskill3" value="6"> 600-700
+                            <input type="radio" asp-for="rateskill3" value="7"> 700-800
+                            <input type="radio" asp-for="rateskill3" value="8"> 800-900
+                            <input type="radio" asp-for="rateskill3" value="9"> 900-1000+
                         </div>
                     </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <div class="col-md-8 control-label">
-                            <input type="radio" asp-for="skill3" id="check33" value=""> ไม่ใช่
-                            <input type="radio" asp-for="skill3" id="check3" value="3"> งานใช้แรง
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-8 control-label">
+                    <input type="radio" asp-for="skill4" id="check44" value="" onclick="myFunction4()"> ไม่ใช่
+                    <input type="radio" asp-for="skill4" id="check4" value="4" onclick="myFunction4()"> งานอื่นๆ
+                    <div asp-for="rateskill4" id="text4" style="display:none">
+                        <div class="row justify-content-end">
+                            <input type="radio" asp-for="rateskill4" value="1"> 100-200
+                            <input type="radio" asp-for="rateskill4" value="2"> 200-300
+                            <input type="radio" asp-for="rateskill4" value="3"> 300-400
+                            <input type="radio" asp-for="rateskill4" value="4"> 400-500
+                            <input type="radio" asp-for="rateskill4" value="5"> 500-600
+                            <input type="radio" asp-for="rateskill4" value="6"> 600-700
+                            <input type="radio" asp-for="rateskill4" value="7"> 700-800
+                            <input type="radio" asp-for="rateskill4" value="8"> 800-900
+                            <input type="radio" asp-for="rateskill4" value="9"> 900-1000+
                         </div>
                     </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <div class="col-md-8 control-label">
-                            <input type="radio" asp-for="skill4" id="check44" value=""> ไม่ใช่
-                            <input type="radio" asp-for="skill4" id="check4" value="4"> งานอื่นๆ
-                        </div>
-                    </div>
-                </li>
-            </ol>
+                </div>
+            </div>
             <div class="form-group">
                 <div class="col-md-8 control-label">
                     <input type="submit" value="สมัครสมาชิก" class="btn btn-success" />
@@ -135,6 +179,48 @@
         </fieldset>
     </form>
 </div>
+<script>
+    function myFunction1() {
+        var checkBox = document.getElementById("check1");
+        var checkbox0 = document.getElementById("check11");
+        var text1 = document.getElementById("text1");
+        if (checkBox.checked == true && checkbox0.checked != true) {
+            text1.style.display = "block";
+        } else {
+            text1.style.display = "none";
+        }
+    }
+    function myFunction2() {
+        var checkBox = document.getElementById("check2");
+        var checkbox0 = document.getElementById("check22");
+        var text2 = document.getElementById("text2");
+        if (checkBox.checked == true && checkbox0.checked != true) {
+            text2.style.display = "block";
+        } else {
+            text2.style.display = "none";
+        }
+    }
+    function myFunction3() {
+        var checkBox = document.getElementById("check3");
+        var checkbox0 = document.getElementById("check33");
+        var text3 = document.getElementById("text3");
+        if (checkBox.checked == true && checkbox0.checked != true) {
+            text3.style.display = "block";
+        } else {
+            text3.style.display = "none";
+        }
+    }
+    function myFunction4() {
+        var checkBox = document.getElementById("check4");
+        var checkbox0 = document.getElementById("check44");
+        var text4 = document.getElementById("text4");
+        if (checkBox.checked == true && checkbox0.checked != true) {
+            text4.style.display = "block";
+        } else {
+            text4.style.display = "none";
+        }
+    }
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

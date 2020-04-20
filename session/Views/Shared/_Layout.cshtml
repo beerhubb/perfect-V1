@@ -16,6 +16,12 @@
     <!-- CSS Files -->
     <link href="~/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Fonts and icons -->
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="wrapper ">
@@ -39,7 +45,7 @@
                             <p>หน้าแรก</p>
                         </a>
                     </li>
-                    <li class="">
+                    <li>
                         <a href="#">
                             <i class="fa fa-list-alt"></i>
                             <p>ค้นหางาน</p>
@@ -51,8 +57,8 @@
                             <li><a asp-area="" asp-controller="Home" asp-action="job4">งานอื่นๆ</a></li>
                         </ul>
                     </li>
-                    <li class="">
-                        <a href="#">
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="">
                             <i class="fas fa-address-card"></i>
                             <p>ค้นหาผู้รับงาน</p>
                         </a>
@@ -63,7 +69,13 @@
                             <li><a asp-area="" asp-controller="Home" asp-action="maid3">งานอื่นๆ</a></li>
                         </ul>
                     </li>
-                    <li class="">
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="prosess">
+                            <i class="fas fa-bullhorn"></i>
+                            <p>ขั่นตอนการทำงาน</p>
+                        </a>
+                    </li>
+                    <li>
                         <a asp-area="" asp-controller="Home" asp-action="About">
                             <i class="fas fa-exclamation-circle"></i>
                             <p>ติดต่อเรา</p>
