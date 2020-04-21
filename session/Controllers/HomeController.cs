@@ -92,7 +92,7 @@ namespace session.Controllers
         {
             ViewBag.use = HttpContext.Session.GetString("use");
             ViewBag.status = HttpContext.Session.GetString("status");
-            var item = Collectionregis.Find(it => it.status == "3" && it.skill1 == "1").ToList();
+            var item = Collectionregis.Find(it => it.status == "3" && it.skill1 == " 1").ToList();
 
             return View(item);
         }

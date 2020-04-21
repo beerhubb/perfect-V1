@@ -52,7 +52,7 @@
                                                     <div class="col-md-3">
                                                         <h5 class="col1">วันที่: @Html.DisplayFor(model => item.date)</h5>
                                                         <h4 class="col1">ราคา: @Html.DisplayFor(modell => item.jprice)</h4>
-                                                        @if (ViewBag.use != null && ViewBag.status == "1")
+                                                        @if (ViewBag.use != null && ViewBag.status == "3")
                                                         {
                                                             @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id }, new { @class = "btn btn-info", onclick = "displayDate()" })
                                                             <script>
@@ -90,7 +90,7 @@
                                                 <div class="col-md-3">
                                                     <h5 class="col1">วันที่: @Html.DisplayFor(model => item.date)</h5>
                                                     <h4 class="col1">ราคา: @Html.DisplayFor(modell => item.jprice)</h4>
-                                                    @if (ViewBag.use != null && ViewBag.status == "1")
+                                                    @if (ViewBag.use != null && ViewBag.status == "3")
                                                     {
                                                         @Html.ActionLink("ลงชื่อรับงาน", "Confirmed", new { id = item._id }, new { @class = "btn btn-info", onclick = "displayDate()" })
                                                         <script>
